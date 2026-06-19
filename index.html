@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rohith Donthi - Data Scientist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:       #F2F1ED;
+      --bg-card:  #E9E7DF;
+      --ink:      #1B2430;
+      --ink-soft: #5B6170;
+      --teal:     #2E6F6B;
+      --copper:   #C2762B;
+      --line:     #D8D4C8;
+      --max-w:    920px;
+      --sp-sm:    1rem;
+      --sp-md:    1.75rem;
+      --sp-lg:    3rem;
+      --sp-xl:    5rem;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding-left: var(--sp-md);
+      padding-right: var(--sp-md);
+    }
+
+    a {
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+    }
+    a:hover { opacity: 0.7; }
+
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin: 0 0 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header style="
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(242,241,237,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  ">
+    <div class="wrap" style="
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding-top: 0.9rem; padding-bottom: 0.9rem;
+    ">
+      <span style="
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: 600; font-size: 0.85rem;
+        letter-spacing: 0.06em;
+      ">ROHITH DONTHI</span>
+
+      <nav style="display: flex; gap: 1.5rem;">
+        <a href="#work" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--ink-soft); border-bottom: none;">Work</a>
+        <a href="#background" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--ink-soft); border-bottom: none;">Background</a>
+        <a href="#contact" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--ink-soft); border-bottom: none;">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+<!-- HERO -->
+  <section class="wrap" style="
+    padding-top: var(--sp-xl);
+    padding-bottom: var(--sp-lg);
+  ">
+    <p class="eyebrow">Maharshi Rohith Donthi</p>
+    <h1 style="
+      font-family: 'IBM Plex Sans Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 7.5vw, 4.6rem);
+      line-height: 1.04;
+      margin: 0.3rem 0 1.2rem 0;
+    ">
+      Credit risk modeling.<br>
+      <span style="color: var(--teal);">Energy market</span>
+      <span style="color: var(--copper);">forecasting.</span>
+    </h1>
+
+    <p style="
+      font-size: 1.15rem;
+      color: var(--ink-soft);
+      max-width: 540px;
+      margin: 0 0 1.8rem 0;
+    ">
+      MS Data Science (Statistics Track), Rutgers University.
+      I build calibrated models - and test them honestly
+      against the baselines that actually matter.
+    </p>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="#work" style="
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.82rem; padding: 0.65rem 1.1rem;
+        background: var(--teal); color: #F2F1ED;
+        border: 1px solid var(--teal); border-radius: 2px;
+        border-bottom: 1px solid var(--teal);
+      ">View work ↓</a>
+      <a href="https://github.com/rohithdonthi" target="_blank" style="
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.82rem; padding: 0.65rem 1.1rem;
+        border: 1px solid var(--ink); border-radius: 2px;
+        color: var(--ink); border-bottom: 1px solid var(--ink);
+      ">GitHub</a>
+      <a href="https://www.linkedin.com/in/rohith-donthi" target="_blank" style="
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.82rem; padding: 0.65rem 1.1rem;
+        border: 1px solid var(--ink); border-radius: 2px;
+        color: var(--ink); border-bottom: 1px solid var(--ink);
+      ">LinkedIn</a>
+    </div>
+  </section>
+  <!-- WORK -->
+<!-- WORK -->
+  <section id="work" class="wrap" style="
+    padding-top: var(--sp-xl);
+    padding-bottom: var(--sp-xl);
+    border-top: 1px solid var(--line);
+  ">
+    <p class="eyebrow">Work</p>
+    <h2 style="
+      font-family: 'IBM Plex Sans Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      margin: 0 0 var(--sp-lg) 0;
+    ">Two problems, one habit: check it against the baseline.</h2>
+
+    <!-- CREDIT RISK CARD -->
+    <div style="
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: var(--sp-lg);
+      margin-bottom: var(--sp-md);
+    ">
+      <span style="
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.72rem; letter-spacing: 0.1em;
+        text-transform: uppercase;
+        background: rgba(46,111,107,0.14);
+        color: var(--teal);
+        padding: 0.2rem 0.55rem;
+        border-radius: 2px;
+      ">Credit Risk</span>
+
+      <h3 style="
+        font-family: 'IBM Plex Sans Condensed', sans-serif;
+        font-weight: 700; font-size: 1.5rem;
+        margin: 0.6rem 0 0.8rem 0;
+      ">Underwriting Decisioning System</h3>
+
+      <p style="color: var(--ink-soft); max-width: 640px; margin: 0 0 1.5rem 0;">
+        An end-to-end underwriting pipeline: a calibrated probability-of-default
+        model mapped to a scorecard, producing a decision and reason codes +
+        PSI drift monitoring that keeps it honest in production. Built on a fully
+        synthetic Metro 2&#174;-style credit bureau dataset.
+      </p>
+
+      <!-- DECISION BAND -->
+      <div style="margin: 1.5rem 0;">
+        <div style="
+          display: flex; justify-content: space-between;
+          font-family: 'IBM Plex Mono', monospace;
+          font-size: 0.72rem; color: var(--ink-soft);
+          margin-bottom: 0.4rem;
+        ">
+          <span>Lower score</span><span>Higher score</span>
+        </div>
+        <div style="display: flex; height: 2.1rem; border-radius: 2px; overflow: hidden;">
+          <div style="background: #8C5A4A; flex: 33; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.74rem; color: #F2F1ED; letter-spacing: 0.04em;">DECLINE</div>
+          <div style="background: var(--copper); flex: 27; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.74rem; color: #F2F1ED; letter-spacing: 0.04em;">REVIEW</div>
+          <div style="background: var(--teal); flex: 40; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.74rem; color: #F2F1ED; letter-spacing: 0.04em;">APPROVE</div>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--ink-soft); margin: 0.6rem 0 0 0;">Decision bands output alongside every score (illustrative proportions).</p>
+      </div>
+
+      <!-- TAGS -->
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; margin: 1.5rem 0; font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: var(--ink-soft);">
+        <span>· Time-based validation</span>
+        <span>· Sigmoid calibration</span>
+        <span>· Scorecard (PDO) mapping</span>
+        <span>· Decision + reason codes</span>
+        <span>· PSI / drift monitoring</span>
+        <span>· 1,200 synthetic consumers</span>
+      </div>
+
+      <a href="https://github.com/rohithdonthi/credit-underwriting-decisioning-system"
+        target="_blank"
+        style="font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 500;">
+        View on GitHub →
+      </a>
+    </div>
+
+    <!-- ENERGY CARD -->
+    <div style="
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: var(--sp-lg);
+      margin-bottom: var(--sp-md);
+    ">
+      <span style="
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.72rem; letter-spacing: 0.1em;
+        text-transform: uppercase;
+        background: rgba(194,118,43,0.14);
+        color: var(--copper);
+        padding: 0.2rem 0.55rem;
+        border-radius: 2px;
+      ">Energy Markets</span>
+
+      <h3 style="
+        font-family: 'IBM Plex Sans Condensed', sans-serif;
+        font-weight: 700; font-size: 1.5rem;
+        margin: 0.6rem 0 0.8rem 0;
+      ">Energy Market Forecasting &amp; Policy Impact Analysis</h3>
+
+      <p style="color: var(--ink-soft); max-width: 640px; margin: 0 0 1.5rem 0;">
+        Forecasting how each U.S. state's electricity generation mix shifts
+        year to year using CLR-transformed compositional time series and
+        per-state VAR models across 49 states - then rigorously benchmarking
+        against the simplest possible baseline.
+      </p>
+
+      <!-- BAR CHART -->
+      <div style="margin: 1.5rem 0;">
+        <div style="display: flex; gap: 1.3rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.74rem; color: var(--ink-soft); margin-bottom: 1rem;">
+          <span><span style="display:inline-block;width:10px;height:10px;background:var(--copper);border-radius:2px;margin-right:0.4rem;vertical-align:middle;"></span>VAR forecast MAE</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#9B9484;border-radius:2px;margin-right:0.4rem;vertical-align:middle;"></span>Persistence baseline MAE</span>
+        </div>
+
+        <!-- Natural Gas -->
+        <div style="margin-bottom: 1rem;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; margin-bottom: 0.35rem;">Natural Gas</div>
+          <div style="background: rgba(0,0,0,0.05); border-radius: 2px; height: 1.7rem; margin-bottom: 0.3rem; overflow:hidden;">
+            <div style="width: 46%; height: 100%; background: var(--copper); display:flex; align-items:center; padding-left:0.5rem; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:#F2F1ED;">19.3</div>
+          </div>
+          <div style="background: rgba(0,0,0,0.05); border-radius: 2px; height: 1.7rem; overflow:hidden;">
+            <div style="width: 8%; height: 100%; background: #9B9484; display:flex; align-items:center; padding-left:0.5rem; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:#F2F1ED;">3.2</div>
+          </div>
+        </div>
+
+        <!-- Other Fossil -->
+        <div style="margin-bottom: 1rem;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; margin-bottom: 0.35rem;">Other Fossil</div>
+          <div style="background: rgba(0,0,0,0.05); border-radius: 2px; height: 1.7rem; margin-bottom: 0.3rem; overflow:hidden;">
+            <div style="width: 52%; height: 100%; background: var(--copper); display:flex; align-items:center; padding-left:0.5rem; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:#F2F1ED;">21.9</div>
+          </div>
+          <div style="background: rgba(0,0,0,0.05); border-radius: 2px; height: 1.7rem; overflow:hidden;">
+            <div style="width: 12%; height: 100%; background: #9B9484; display:flex; align-items:center; padding-left:0.5rem; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:#F2F1ED;">4.9</div>
+          </div>
+        </div>
+
+        <!-- Nuclear & Renewable -->
+        <div style="margin-bottom: 0.5rem;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; margin-bottom: 0.35rem;">Nuclear &amp; Renewable</div>
+          <div style="background: rgba(0,0,0,0.05); border-radius: 2px; height: 1.7rem; margin-bottom: 0.3rem; overflow:hidden;">
+            <div style="width: 100%; height: 100%; background: var(--copper); display:flex; align-items:center; padding-left:0.5rem; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:#F2F1ED;">42.0</div>
+          </div>
+          <div style="background: rgba(0,0,0,0.05); border-radius: 2px; height: 1.7rem; overflow:hidden;">
+            <div style="width: 23%; height: 100%; background: #9B9484; display:flex; align-items:center; padding-left:0.5rem; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:#F2F1ED;">9.8</div>
+          </div>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--ink-soft); margin: 0.6rem 0 0 0;">One-step-ahead MAE, 2023 forecast (percentage points) - lower is better.</p>
+
+        <!-- FINDING BOX -->
+        <div style="
+          background: rgba(46,111,107,0.08);
+          border-left: 3px solid var(--teal);
+          padding: 0.9rem 1.1rem;
+          margin-top: 1.2rem;
+          font-size: 0.92rem;
+        ">
+          <strong style="color: var(--teal);">The baseline won.</strong>
+          Annual generation shares move slowly, and ~30 yearly observations
+          per state isn't enough for multivariate VAR without overfitting.
+          That result shaped what I'd try next: exogenous covariates (policy,
+          fuel prices), or pooling across states.
+        </div>
+      </div>
+
+      <!-- TAGS -->
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; margin: 1.5rem 0; font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: var(--ink-soft);">
+        <span>· 50 states analyzed (49 modeled)</span>
+        <span>· CLR transform</span>
+        <span>· Per-state VAR</span>
+        <span>· ADF + AIC / BIC / HQIC selection</span>
+        <span>· EIA 1990–2023</span>
+      </div>
+
+      <a href="https://github.com/rohithdonthi/Energy-Market-Forecasting-and-Policy-Impact-Analysis"
+        target="_blank"
+        style="font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 500;">
+        View on GitHub →
+      </a>
+    </div>
+
+    <p style="font-size: 0.88rem;">
+      <a href="https://github.com/rohithdonthi" target="_blank">See more projects on GitHub →</a>
+    </p>
+  </section>
+  <!-- BACKGROUND -->
+<!-- BACKGROUND -->
+  <section id="background" class="wrap" style="
+    padding-top: var(--sp-xl);
+    padding-bottom: var(--sp-xl);
+    border-top: 1px solid var(--line);
+  ">
+    <p class="eyebrow">Background</p>
+    <h2 style="
+      font-family: 'IBM Plex Sans Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      margin: 0 0 var(--sp-lg) 0;
+    ">Where the experience comes from.</h2>
+
+    <!-- EXPERIENCE ROW 1 -->
+    <div style="
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1.2rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+    ">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; color: var(--ink-soft);">Oct–Dec 2025</div>
+      <div>
+        <strong>Data Science Intern, Synergy Resources</strong>
+        <p style="margin: 0.3rem 0 0 0; color: var(--ink-soft); font-size: 0.95rem;">
+          Built a credit underwriting pipeline (logistic regression + gradient
+          boosting) supporting a 50K+ account portfolio. AUC 0.87, with an
+          estimated $180K in annualized savings.
+        </p>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE ROW 2 -->
+    <div style="
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1.2rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+    ">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; color: var(--ink-soft);">2 years</div>
+      <div>
+        <strong>Statistics Grader &amp; Mentor, Rutgers University</strong>
+        <p style="margin: 0.3rem 0 0 0; color: var(--ink-soft); font-size: 0.95rem;">
+          Evaluated 200+ student assignments and built automation scripts
+          to streamline the grading workflow.
+        </p>
+      </div>
+    </div>
+
+    <!-- EDUCATION ROW -->
+    <div style="
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1.2rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+    ">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; color: var(--ink-soft);">Education</div>
+      <div>
+        <strong>MS Data Science - Statistics Track, Rutgers University</strong>
+        <p style="margin: 0.3rem 0 0 0; color: var(--ink-soft); font-size: 0.95rem;">
+          Capstone thesis on U.S. state-level electricity generation mix
+          forecasting - CLR transformation + VAR methodology across all 50 states.
+        </p>
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div style="
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-top: 1.5rem;
+    ">
+      <strong style="color: var(--ink);">Certifications —</strong>
+      Bloomberg Market Concepts (BMC) · Financial Statistics &amp; Risk Management (FSRM)
+    </div>
+
+    <!-- TECH STACK CHIPS -->
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.4rem;">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; border: 1px solid var(--line); padding: 0.3rem 0.65rem; border-radius: 2px; color: var(--ink-soft);">Python</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; border: 1px solid var(--line); padding: 0.3rem 0.65rem; border-radius: 2px; color: var(--ink-soft);">XGBoost</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; border: 1px solid var(--line); padding: 0.3rem 0.65rem; border-radius: 2px; color: var(--ink-soft);">LightGBM</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; border: 1px solid var(--line); padding: 0.3rem 0.65rem; border-radius: 2px; color: var(--ink-soft);">TensorFlow</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; border: 1px solid var(--line); padding: 0.3rem 0.65rem; border-radius: 2px; color: var(--ink-soft);">scikit-learn</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; border: 1px solid var(--line); padding: 0.3rem 0.65rem; border-radius: 2px; color: var(--ink-soft);">statsmodels</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; border: 1px solid var(--line); padding: 0.3rem 0.65rem; border-radius: 2px; color: var(--ink-soft);">pandas</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; border: 1px solid var(--line); padding: 0.3rem 0.65rem; border-radius: 2px; color: var(--ink-soft);">AWS — S3, EC2, Lambda</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; border: 1px solid var(--line); padding: 0.3rem 0.65rem; border-radius: 2px; color: var(--ink-soft);">Docker</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; border: 1px solid var(--line); padding: 0.3rem 0.65rem; border-radius: 2px; color: var(--ink-soft);">SQL</span>
+    </div>
+  </section>
+  <!-- CONTACT -->
+<!-- CONTACT -->
+  <section id="contact" class="wrap" style="
+    padding-top: var(--sp-xl);
+    padding-bottom: var(--sp-xl);
+    border-top: 1px solid var(--line);
+  ">
+    <p class="eyebrow">Contact</p>
+    <h2 style="
+      font-family: 'IBM Plex Sans Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      margin: 0 0 1rem 0;
+    ">Open to Data Scientist, Data Analyst, and ML Engineer roles.</h2>
+
+    <p style="color: var(--ink-soft); max-width: 520px; margin: 0 0 1.8rem 0;">
+      Particularly interested in credit risk and energy market analytics,
+      but always glad to talk about rigorous, well-evaluated ML wherever
+      it's needed.
+    </p>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="https://www.linkedin.com/in/rohith-donthi" target="_blank" style="
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.82rem; padding: 0.65rem 1.1rem;
+        background: var(--teal); color: #F2F1ED;
+        border: 1px solid var(--teal); border-radius: 2px;
+        border-bottom: 1px solid var(--teal);
+      ">Connect on LinkedIn</a>
+      <a href="https://github.com/rohithdonthi" target="_blank" style="
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.82rem; padding: 0.65rem 1.1rem;
+        border: 1px solid var(--ink); border-radius: 2px;
+        color: var(--ink); border-bottom: 1px solid var(--ink);
+      ">GitHub</a>
+    </div>
+  </section>
+  <!-- FOOTER -->
+
+</body>
+</html>
