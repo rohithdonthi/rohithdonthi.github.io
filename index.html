@@ -3,439 +3,879 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rohith Donthi - Data Scientist</title>
+  <title>Rohith Donthi — Data Scientist</title>
   <meta name="description" content="Portfolio of Maharshi Rohith Donthi — Data Scientist specializing in credit risk modeling and energy market forecasting.">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
   <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
     :root {
-      --bg:       #F2F1ED;
-      --bg-card:  #E9E7DF;
-      --ink:      #1B2430;
-      --ink-soft: #5B6170;
-      --teal:     #2E6F6B;
-      --copper:   #C2762B;
-      --line:     #D8D4C8;
-      --max-w:    920px;
-      --sp-sm:    1rem;
-      --sp-md:    1.75rem;
-      --sp-lg:    3rem;
-      --sp-xl:    5rem;
+      --bg:        #060C17;
+      --bg2:       #091525;
+      --bg3:       #0D1E35;
+      --ink:       #C8D8EC;
+      --ink-soft:  #6B84A8;
+      --teal:      #00C4B4;
+      --copper:    #E8834A;
+      --green:     #1EC87A;
+      --line:      #132840;
+      --max-w:     920px;
+      --sp-sm:     1rem;
+      --sp-md:     1.75rem;
+      --sp-lg:     3rem;
+      --sp-xl:     5rem;
+      --card-transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    * { box-sizing: border-box; }
+    /* ─── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
       background: var(--bg);
       color: var(--ink);
       font-family: 'IBM Plex Sans', system-ui, sans-serif;
       font-size: 16px;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
+    /* ─── CANVAS BACKGROUND ──────────────────────────────── */
+    #grid-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+
+    /* ─── LAYOUT ─────────────────────────────────────────── */
     .wrap {
+      position: relative;
+      z-index: 1;
       max-width: var(--max-w);
       margin: 0 auto;
       padding-left: var(--sp-md);
       padding-right: var(--sp-md);
     }
 
+    section { position: relative; z-index: 1; }
+
+    /* ─── LINKS ──────────────────────────────────────────── */
     a {
       color: var(--teal);
       text-decoration: none;
       border-bottom: 1px solid currentColor;
+      transition: opacity 0.15s;
     }
     a:hover { opacity: 0.7; }
 
+    /* ─── EYEBROW ────────────────────────────────────────── */
     .eyebrow {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--ink-soft);
-      margin: 0 0 0.5rem 0;
+      margin: 0 0 0.5rem;
     }
 
-    .skills-group { margin-bottom: 2rem; }
-    .skills-group h4 {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin: 0 0 0.8rem 0;
+    /* ─── HEADER ─────────────────────────────────────────── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6,12,23,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
     }
-    .skills-grid {
+    .site-header .wrap {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.9rem;
+      padding-bottom: 0.9rem;
     }
-    .skill-chip {
+    .wordmark {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+    }
+    .site-nav {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .site-nav a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      border-bottom: none;
+    }
+    .site-nav a:hover { color: var(--teal); opacity: 1; }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      padding-top: var(--sp-xl);
+      padding-bottom: var(--sp-lg);
+    }
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .hero-text { flex: 1; min-width: 280px; }
+    .hero h1 {
+      font-family: 'IBM Plex Sans Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 7.5vw, 4.4rem);
+      line-height: 1.04;
+      margin: 0.3rem 0 1.2rem;
+    }
+    .hero h1 .line-credit {
+      display: block;
+      background: linear-gradient(90deg, var(--teal) 0%, #4DD8D0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero h1 .line-energy {
+      display: block;
+      background: linear-gradient(90deg, var(--green) 0%, var(--copper) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-lede {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      max-width: 480px;
+      margin: 0 0 1.8rem;
+      line-height: 1.65;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .btn {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.82rem;
-      padding: 0.4rem 0.8rem;
-      border: 1px solid var(--line);
-      border-radius: 2px;
+      padding: 0.6rem 1.1rem;
+      border-radius: 3px;
+      border-bottom: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); opacity: 1; }
+    .btn-primary {
+      background: var(--teal);
+      color: #060C17;
+      border: 1px solid var(--teal);
+      font-weight: 600;
+      box-shadow: 0 0 20px rgba(0,196,180,0.25);
+    }
+    .btn-primary:hover { box-shadow: 0 0 30px rgba(0,196,180,0.4); }
+    .btn-ghost {
+      background: transparent;
       color: var(--ink);
-      background: var(--bg-card);
+      border: 1px solid var(--line);
+    }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* Hero photo */
+    .hero-photo { flex-shrink: 0; }
+    .hero-photo img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid var(--teal);
+      display: block;
+      box-shadow: 0 0 40px rgba(0,196,180,0.2);
+    }
+    .hero-photo-fallback {
+      display: none;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 2px solid var(--line);
+      background: var(--bg2);
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+      text-align: center;
+      padding: 1rem;
     }
 
+    /* ─── SECTION COMMON ─────────────────────────────────── */
+    .section {
+      padding-top: var(--sp-xl);
+      padding-bottom: var(--sp-xl);
+      border-top: 1px solid var(--line);
+    }
+    .section-heading {
+      font-family: 'IBM Plex Sans Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+      color: var(--ink);
+      margin: 0 0 var(--sp-lg);
+    }
+
+    /* ─── ABOUT ──────────────────────────────────────────── */
+    .about-body {
+      max-width: 640px;
+      color: var(--ink-soft);
+      font-size: 1.02rem;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+    .about-body strong { color: var(--ink); font-weight: 600; }
+    .about-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      margin-top: 1.5rem;
+    }
+    .about-meta .status-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      margin-right: 0.4rem;
+      vertical-align: middle;
+      animation: pulse-green 2s ease-in-out infinite;
+    }
+    @keyframes pulse-green {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(30,200,122,0.5); }
+      50% { box-shadow: 0 0 0 5px rgba(30,200,122,0); }
+    }
+
+    /* ─── PROJECT CARDS ──────────────────────────────────── */
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: var(--sp-lg);
+      margin-bottom: var(--sp-md);
+      transition: var(--card-transition);
+      transform-style: preserve-3d;
+      will-change: transform;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%);
+      pointer-events: none;
+      border-radius: 6px;
+    }
+    .project-card.teal-card {
+      box-shadow: 0 0 0 0 rgba(0,196,180,0);
+    }
+    .project-card.teal-card:hover {
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(0,196,180,0.08);
+      border-color: rgba(0,196,180,0.25);
+    }
+    .project-card.copper-card:hover {
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(232,131,74,0.08);
+      border-color: rgba(232,131,74,0.25);
+    }
     .project-visual {
-      border-radius: 3px 3px 0 0;
-      height: 120px;
+      height: 110px;
       display: flex;
       align-items: center;
       padding: 0 var(--sp-lg);
-      margin: calc(-1 * var(--sp-lg)) calc(-1 * var(--sp-lg)) var(--sp-lg) calc(-1 * var(--sp-lg));
+      margin: calc(-1 * var(--sp-lg)) calc(-1 * var(--sp-lg)) var(--sp-lg);
+      border-radius: 5px 5px 0 0;
+      border-bottom: 1px solid var(--line);
+      position: relative;
       overflow: hidden;
     }
+    .project-visual-teal {
+      background: linear-gradient(135deg, rgba(0,196,180,0.12) 0%, rgba(0,196,180,0.03) 100%);
+    }
+    .project-visual-copper {
+      background: linear-gradient(135deg, rgba(232,131,74,0.12) 0%, rgba(232,131,74,0.03) 100%);
+    }
+    .pv-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .pv-title {
+      font-family: 'IBM Plex Sans Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--ink);
+    }
+    .pv-stat {
+      margin-left: auto;
+      text-align: right;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .pv-stat .big { font-size: 2.2rem; font-weight: 600; line-height: 1; }
+    .pv-stat .small { font-size: 0.7rem; color: var(--ink-soft); margin-top: 2px; }
+    .project-desc {
+      color: var(--ink-soft);
+      max-width: 640px;
+      margin: 0 0 1.5rem;
+      font-size: 0.97rem;
+      line-height: 1.65;
+    }
 
+    /* Decision band */
+    .band-wrap { margin: 1.5rem 0; }
+    .band-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--ink-soft);
+      margin-bottom: 0.35rem;
+    }
+    .band-track {
+      display: flex;
+      height: 2rem;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .band-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+    }
+    .band-note {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      margin-top: 0.5rem;
+    }
+
+    /* MAE bars */
+    .mae-legend {
+      display: flex;
+      gap: 1.2rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+    }
+    .legend-dot {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 2px;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+    .mae-group { margin-bottom: 0.9rem; }
+    .mae-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--ink-soft);
+      margin-bottom: 0.3rem;
+    }
+    .mae-track {
+      background: rgba(255,255,255,0.05);
+      border-radius: 2px;
+      height: 1.6rem;
+      margin-bottom: 0.25rem;
+      overflow: hidden;
+    }
+    .mae-fill {
+      height: 100%;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      padding-left: 0.5rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.8);
+    }
+    .finding-box {
+      background: rgba(0,196,180,0.07);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 3px 3px 0;
+      padding: 0.8rem 1rem;
+      margin-top: 1.1rem;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .finding-box strong { color: var(--teal); }
+
+    /* Tags */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1rem;
+      margin: 1.4rem 0;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--ink-soft);
+    }
+
+    /* Card links */
+    .card-links {
+      display: flex;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .card-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* ─── EXPERIENCE ─────────────────────────────────────── */
+    .exp-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.2rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .exp-row:last-of-type { border-bottom: none; }
+    .exp-when {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      padding-top: 2px;
+    }
+    .exp-what strong {
+      display: block;
+      color: var(--ink);
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .exp-what p {
+      color: var(--ink-soft);
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+    .certs {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      margin-top: 1.5rem;
+    }
+    .certs strong { color: var(--ink); }
+
+    /* ─── SKILLS ─────────────────────────────────────────── */
+    .skills-grid-outer {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1.8rem;
+    }
+    .skill-group h4 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin: 0 0 0.7rem;
+    }
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .chip {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.76rem;
+      padding: 0.3rem 0.65rem;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      color: var(--ink-soft);
+      background: var(--bg2);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .chip:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* ─── CODE BLOCK ─────────────────────────────────────── */
+    .code-wrap { margin-top: var(--sp-lg); }
     .code-block {
-      background: #1B2430;
+      background: #040810;
+      border: 1px solid var(--line);
       border-radius: 4px;
       padding: 1.2rem 1.5rem;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.82rem;
-      line-height: 1.7;
-      color: #E9E7DF;
+      font-size: 0.8rem;
+      line-height: 1.75;
+      color: var(--ink);
       overflow-x: auto;
-      margin-top: 1.5rem;
     }
-    .code-block .kw  { color: #7EC8A0; }
-    .code-block .fn  { color: #79B8FF; }
-    .code-block .nm  { color: #C2762B; }
-    .code-block .cm  { color: #6A737D; }
+    .kw  { color: #6EC8A0; }
+    .fn  { color: #79B8FF; }
+    .nm  { color: var(--copper); }
+    .cm  { color: #4A6080; }
 
+    /* ─── CONTACT ─────────────────────────────────────────── */
+    .contact-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      margin-bottom: 1.8rem;
+    }
+    .contact-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn-copper {
+      background: transparent;
+      color: var(--copper);
+      border: 1px solid var(--copper);
+    }
+    .btn-copper:hover { background: rgba(232,131,74,0.08); opacity: 1; }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    .site-footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--line);
+      padding: 2rem 0;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--ink-soft);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+    .footer-links { display: flex; gap: 1.2rem; }
+    .footer-links a { color: var(--ink-soft); border-bottom: 1px solid var(--line); }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
     @media (max-width: 640px) {
-      .hero-inner { flex-direction: column-reverse !important; }
-      .hero-photo { margin: 0 auto 1.5rem !important; }
+      .hero-inner { flex-direction: column-reverse; }
+      .hero-photo { margin: 0 auto; }
+      .exp-row { grid-template-columns: 1fr; gap: 0.3rem; }
+      .site-nav { gap: 1rem; }
+    }
+
+    /* ─── REDUCED MOTION ─────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      #grid-canvas { display: none; }
+      .project-card { transition: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header style="
-    position: sticky; top: 0; z-index: 10;
-    background: rgba(242,241,237,0.92);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid var(--line);
-  ">
-    <div class="wrap" style="
-      display: flex; align-items: center;
-      justify-content: space-between;
-      padding-top: 0.9rem; padding-bottom: 0.9rem;
-    ">
-      <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:0.85rem;letter-spacing:0.06em;">ROHITH DONTHI</span>
-      <nav style="display:flex;gap:1.5rem;">
-        <a href="#about"   style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--ink-soft);border-bottom:none;">About</a>
-        <a href="#work"    style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--ink-soft);border-bottom:none;">Work</a>
-        <a href="#skills"  style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--ink-soft);border-bottom:none;">Skills</a>
-        <a href="#contact" style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--ink-soft);border-bottom:none;">Contact</a>
-      </nav>
-    </div>
-  </header>
+<!-- ENERGY GRID CANVAS -->
+<canvas id="grid-canvas"></canvas>
 
-  <!-- HERO -->
-  <section class="wrap" style="padding-top:var(--sp-xl);padding-bottom:var(--sp-lg);">
-    <div class="hero-inner" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+<!-- HEADER -->
+<header class="site-header">
+  <div class="wrap">
+    <span class="wordmark">ROHITH DONTHI</span>
+    <nav>
+      <ul class="site-nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-      <div style="flex:1;min-width:280px;">
-        <p class="eyebrow">Maharshi Rohith Donthi</p>
-        <h1 style="
-          font-family:'IBM Plex Sans Condensed',sans-serif;
-          font-weight:700;
-          font-size:clamp(2.4rem,7.5vw,4.6rem);
-          line-height:1.04;
-          margin:0.3rem 0 1.2rem 0;
-        ">
-          Credit risk modeling.<br>
-          <span style="color:var(--teal);">Energy market</span>
-          <span style="color:var(--copper);">forecasting.</span>
-        </h1>
-        <p style="font-size:1.15rem;color:var(--ink-soft);max-width:480px;margin:0 0 1.8rem 0;">
-          MS Data Science (Statistics Track), Rutgers University.
-          I build calibrated models - and test them honestly
-          against the baselines that actually matter.
-        </p>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-          <a href="#work" style="font-family:'IBM Plex Mono',monospace;font-size:0.82rem;padding:0.65rem 1.1rem;background:var(--teal);color:#F2F1ED;border:1px solid var(--teal);border-radius:2px;border-bottom:1px solid var(--teal);">View work ↓</a>
-          <a href="https://github.com/rohithdonthi" target="_blank" style="font-family:'IBM Plex Mono',monospace;font-size:0.82rem;padding:0.65rem 1.1rem;border:1px solid var(--ink);border-radius:2px;color:var(--ink);border-bottom:1px solid var(--ink);">GitHub</a>
-          <a href="https://www.linkedin.com/in/rohith-donthi" target="_blank" style="font-family:'IBM Plex Mono',monospace;font-size:0.82rem;padding:0.65rem 1.1rem;border:1px solid var(--ink);border-radius:2px;color:var(--ink);border-bottom:1px solid var(--ink);">LinkedIn</a>
-        </div>
-      </div>
-
-      <div class="hero-photo" style="flex-shrink:0;">
-        <img
-          src="photo.jpg"
-          alt="Rohith Donthi"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-          style="width:200px;height:200px;object-fit:cover;border-radius:50%;border:3px solid var(--line);display:block;"
-        >
-        <div style="display:none;width:200px;height:200px;border-radius:50%;border:3px solid var(--line);background:var(--bg-card);align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--ink-soft);text-align:center;padding:1rem;">
-          Add photo.jpg to repo
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="wrap" style="padding-top:var(--sp-xl);padding-bottom:var(--sp-xl);border-top:1px solid var(--line);">
-    <p class="eyebrow">About</p>
-    <h2 style="font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:clamp(1.6rem,3.5vw,2.2rem);margin:0 0 1.5rem 0;">Hi, I'm Rohith.</h2>
-    <p style="max-width:640px;color:var(--ink-soft);font-size:1.05rem;margin:0 0 1rem 0;">
-      I'm a Data Scientist specializing in <strong style="color:var(--ink);">credit risk modeling</strong> and <strong style="color:var(--ink);">energy market analytics</strong>, with an MS in Data Science (Statistics Track) from Rutgers University.
-    </p>
-    <p style="max-width:640px;color:var(--ink-soft);font-size:1.05rem;margin:0 0 1.5rem 0;">
-      I build end-to-end ML pipelines: data ingestion → modeling → calibration → monitoring - and I'm especially interested in problems where statistical rigor and domain context both matter. My approach: always benchmark the fancy model against the simple baseline first.
-    </p>
-    <div style="display:flex;flex-wrap:wrap;gap:2rem;font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:var(--ink-soft);">
-      <span>📍 Jersey City, NJ</span>
-      <span>🎓 Rutgers University</span>
-      <span>💼 Open to full-time roles</span>
-      <span>🌐 English · Hindi · Telugu · French</span>
-    </div>
-  </section>
-
-  <!-- WORK -->
-  <section id="work" class="wrap" style="padding-top:var(--sp-xl);padding-bottom:var(--sp-xl);border-top:1px solid var(--line);">
-    <p class="eyebrow">Work</p>
-    <h2 style="font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:clamp(1.6rem,3.5vw,2.2rem);margin:0 0 var(--sp-lg) 0;">Two problems, one habit: check it against the baseline.</h2>
-
-    <!-- CREDIT RISK CARD -->
-    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:4px;padding:var(--sp-lg);margin-bottom:var(--sp-md);">
-
-      <div class="project-visual" style="background:linear-gradient(135deg,rgba(46,111,107,0.15) 0%,rgba(46,111,107,0.05) 100%);border-bottom:1px solid var(--line);">
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.4rem;">Credit Risk</div>
-          <div style="font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:1.6rem;color:var(--ink);">Underwriting Decisioning System</div>
-        </div>
-        <div style="margin-left:auto;text-align:right;font-family:'IBM Plex Mono',monospace;">
-          <div style="font-size:2rem;font-weight:600;color:var(--teal);">0.87</div>
-          <div style="font-size:0.72rem;color:var(--ink-soft);">AUC ROC</div>
-        </div>
-      </div>
-
-      <p style="color:var(--ink-soft);max-width:640px;margin:0 0 1.5rem 0;">
-        An end-to-end underwriting pipeline: a calibrated probability-of-default model mapped to a scorecard, producing a decision and reason codes + PSI drift monitoring. Built on a fully synthetic Metro 2®-style credit bureau dataset.
+<!-- HERO -->
+<section class="wrap hero">
+  <div class="hero-inner">
+    <div class="hero-text reveal">
+      <p class="eyebrow">Maharshi Rohith Donthi</p>
+      <h1>
+        <span class="line-credit">Credit risk modeling.</span>
+        <span class="line-energy">Energy market forecasting.</span>
+      </h1>
+      <p class="hero-lede">
+        MS Data Science (Statistics Track), Rutgers University.
+        I build calibrated models — and test them honestly
+        against the baselines that actually matter.
       </p>
-
-      <div style="margin:1.5rem 0;">
-        <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--ink-soft);margin-bottom:0.4rem;">
-          <span>Lower score</span><span>Higher score</span>
-        </div>
-        <div style="display:flex;height:2.1rem;border-radius:2px;overflow:hidden;">
-          <div style="background:#8C5A4A;flex:33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:0.74rem;color:#F2F1ED;letter-spacing:0.04em;">DECLINE</div>
-          <div style="background:var(--copper);flex:27;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:0.74rem;color:#F2F1ED;letter-spacing:0.04em;">REVIEW</div>
-          <div style="background:var(--teal);flex:40;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:0.74rem;color:#F2F1ED;letter-spacing:0.04em;">APPROVE</div>
-        </div>
-        <p style="font-size:0.8rem;color:var(--ink-soft);margin:0.6rem 0 0 0;">Decision bands output alongside every score (illustrative proportions).</p>
-      </div>
-
-      <div style="display:flex;flex-wrap:wrap;gap:0.5rem 1.2rem;margin:1.5rem 0;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--ink-soft);">
-        <span>· Time-based validation</span>
-        <span>· Sigmoid calibration</span>
-        <span>· Scorecard (PDO) mapping</span>
-        <span>· Decision + reason codes</span>
-        <span>· PSI / drift monitoring</span>
-        <span>· 1,200 synthetic consumers</span>
-      </div>
-
-      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
-        <a href="https://github.com/rohithdonthi/credit-underwriting-decisioning-system" target="_blank" style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:500;">View on GitHub →</a>
-        <a href="https://credit-underwriting-decisioning-system-cdtsdqhdh5awgnmmtoyvnm.streamlit.app" target="_blank" style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:500;color:var(--teal);">Live demo →</a>
+      <div class="hero-btns">
+        <a href="#work" class="btn btn-primary">View work ↓</a>
+        <a href="https://github.com/rohithdonthi" target="_blank" class="btn btn-ghost">GitHub</a>
+        <a href="https://www.linkedin.com/in/rohith-donthi" target="_blank" class="btn btn-ghost">LinkedIn</a>
       </div>
     </div>
-
-    <!-- ENERGY CARD -->
-    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:4px;padding:var(--sp-lg);margin-bottom:var(--sp-md);">
-
-      <div class="project-visual" style="background:linear-gradient(135deg,rgba(194,118,43,0.15) 0%,rgba(194,118,43,0.05) 100%);border-bottom:1px solid var(--line);">
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--copper);margin-bottom:0.4rem;">Energy Markets</div>
-          <div style="font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:1.6rem;color:var(--ink);">Energy Market Forecasting &amp; Policy Analysis</div>
-        </div>
-        <div style="margin-left:auto;text-align:right;font-family:'IBM Plex Mono',monospace;">
-          <div style="font-size:2rem;font-weight:600;color:var(--copper);">50</div>
-          <div style="font-size:0.72rem;color:var(--ink-soft);">states modeled</div>
-        </div>
-      </div>
-
-      <p style="color:var(--ink-soft);max-width:640px;margin:0 0 1.5rem 0;">
-        Forecasting how each U.S. state's electricity generation mix shifts year to year using CLR-transformed compositional time series and per-state VAR models across 49 states - then rigorously benchmarking against the simplest possible baseline.
-      </p>
-
-      <div style="margin:1.5rem 0;">
-        <div style="display:flex;gap:1.3rem;font-family:'IBM Plex Mono',monospace;font-size:0.74rem;color:var(--ink-soft);margin-bottom:1rem;">
-          <span><span style="display:inline-block;width:10px;height:10px;background:var(--copper);border-radius:2px;margin-right:0.4rem;vertical-align:middle;"></span>VAR forecast MAE</span>
-          <span><span style="display:inline-block;width:10px;height:10px;background:#9B9484;border-radius:2px;margin-right:0.4rem;vertical-align:middle;"></span>Persistence baseline MAE</span>
-        </div>
-
-        <div style="margin-bottom:1rem;">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.78rem;margin-bottom:0.35rem;">Natural Gas</div>
-          <div style="background:rgba(0,0,0,0.05);border-radius:2px;height:1.7rem;margin-bottom:0.3rem;overflow:hidden;"><div style="width:46%;height:100%;background:var(--copper);display:flex;align-items:center;padding-left:0.5rem;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:#F2F1ED;">19.3</div></div>
-          <div style="background:rgba(0,0,0,0.05);border-radius:2px;height:1.7rem;overflow:hidden;"><div style="width:8%;height:100%;background:#9B9484;display:flex;align-items:center;padding-left:0.5rem;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:#F2F1ED;">3.2</div></div>
-        </div>
-
-        <div style="margin-bottom:1rem;">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.78rem;margin-bottom:0.35rem;">Other Fossil</div>
-          <div style="background:rgba(0,0,0,0.05);border-radius:2px;height:1.7rem;margin-bottom:0.3rem;overflow:hidden;"><div style="width:52%;height:100%;background:var(--copper);display:flex;align-items:center;padding-left:0.5rem;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:#F2F1ED;">21.9</div></div>
-          <div style="background:rgba(0,0,0,0.05);border-radius:2px;height:1.7rem;overflow:hidden;"><div style="width:12%;height:100%;background:#9B9484;display:flex;align-items:center;padding-left:0.5rem;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:#F2F1ED;">4.9</div></div>
-        </div>
-
-        <div style="margin-bottom:0.5rem;">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.78rem;margin-bottom:0.35rem;">Nuclear &amp; Renewable</div>
-          <div style="background:rgba(0,0,0,0.05);border-radius:2px;height:1.7rem;margin-bottom:0.3rem;overflow:hidden;"><div style="width:100%;height:100%;background:var(--copper);display:flex;align-items:center;padding-left:0.5rem;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:#F2F1ED;">42.0</div></div>
-          <div style="background:rgba(0,0,0,0.05);border-radius:2px;height:1.7rem;overflow:hidden;"><div style="width:23%;height:100%;background:#9B9484;display:flex;align-items:center;padding-left:0.5rem;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:#F2F1ED;">9.8</div></div>
-        </div>
-
-        <p style="font-size:0.8rem;color:var(--ink-soft);margin:0.6rem 0 0 0;">One-step-ahead MAE, 2023 forecast (percentage points) - lower is better.</p>
-
-        <div style="background:rgba(46,111,107,0.08);border-left:3px solid var(--teal);padding:0.9rem 1.1rem;margin-top:1.2rem;font-size:0.92rem;">
-          <strong style="color:var(--teal);">The baseline won.</strong>
-          Annual generation shares move slowly, and ~30 yearly observations per state isn't enough for multivariate VAR without overfitting. That result shaped what I'd try next: exogenous covariates (policy, fuel prices), or pooling across states.
-        </div>
-      </div>
-
-      <div style="display:flex;flex-wrap:wrap;gap:0.5rem 1.2rem;margin:1.5rem 0;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--ink-soft);">
-        <span>· 50 states analyzed (49 modeled)</span>
-        <span>· CLR transform</span>
-        <span>· Per-state VAR</span>
-        <span>· ADF + AIC / BIC / HQIC selection</span>
-        <span>· EIA 1990–2023</span>
-      </div>
-
-      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
-        <a href="https://github.com/rohithdonthi/Energy-Market-Forecasting-and-Policy-Impact-Analysis" target="_blank" style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:500;">View on GitHub →</a>
-        <a href="energy_map.html" target="_blank" style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:500;color:var(--copper);">Explore the data →</a>
-      </div>
+    <div class="hero-photo reveal">
+      <img
+        src="photo.jpg"
+        alt="Rohith Donthi"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="hero-photo-fallback">Add photo.jpg to repo</div>
     </div>
+  </div>
+</section>
 
-    <p style="font-size:0.88rem;"><a href="https://github.com/rohithdonthi" target="_blank">See more projects on GitHub →</a></p>
-  </section>
+<!-- ABOUT -->
+<section id="about" class="wrap section">
+  <p class="eyebrow">About</p>
+  <h2 class="section-heading">Hi, I'm Rohith.</h2>
+  <p class="about-body reveal">
+    I'm a Data Scientist specializing in <strong>credit risk modeling</strong> and
+    <strong>energy market analytics</strong>, with an MS in Data Science (Statistics Track)
+    from Rutgers University.
+  </p>
+  <p class="about-body reveal">
+    I build end-to-end ML pipelines — data ingestion → modeling → calibration → monitoring —
+    and I'm especially interested in problems where statistical rigor and domain context
+    both matter. My approach: always benchmark the fancy model against the simple baseline first.
+  </p>
+  <div class="about-meta reveal">
+    <span>📍 Jersey City, NJ</span>
+    <span>🎓 Rutgers University</span>
+    <span><span class="status-dot"></span>Open to full-time roles</span>
+    <span>🌐 English · Hindi · Telugu · French</span>
+  </div>
+</section>
 
-  <!-- BACKGROUND -->
-  <section id="background" class="wrap" style="padding-top:var(--sp-xl);padding-bottom:var(--sp-xl);border-top:1px solid var(--line);">
-    <p class="eyebrow">Background</p>
-    <h2 style="font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:clamp(1.6rem,3.5vw,2.2rem);margin:0 0 var(--sp-lg) 0;">Where the experience comes from.</h2>
+<!-- WORK -->
+<section id="work" class="wrap section">
+  <p class="eyebrow">Work</p>
+  <h2 class="section-heading">Two problems, one habit: check it against the baseline.</h2>
 
-    <div style="display:grid;grid-template-columns:140px 1fr;gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid var(--line);">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.82rem;color:var(--ink-soft);">Oct–Dec 2025</div>
+  <!-- CREDIT CARD -->
+  <div class="project-card teal-card reveal">
+    <div class="project-visual project-visual-teal">
       <div>
-        <strong>Data Science Intern, Synergy Resources</strong>
-        <p style="margin:0.3rem 0 0 0;color:var(--ink-soft);font-size:0.95rem;">Built a credit underwriting pipeline (logistic regression + gradient boosting) supporting a 50K+ account portfolio. AUC 0.87, with an estimated $180K in annualized savings.</p>
+        <div class="pv-label" style="color:var(--teal);">Credit Risk</div>
+        <div class="pv-title">Underwriting Decisioning System</div>
+      </div>
+      <div class="pv-stat">
+        <div class="big" style="color:var(--teal);">0.87</div>
+        <div class="small">AUC ROC</div>
       </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:140px 1fr;gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid var(--line);">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.82rem;color:var(--ink-soft);">2 years</div>
+    <p class="project-desc">
+      An end-to-end underwriting pipeline: a calibrated probability-of-default model
+      mapped to a scorecard, producing a decision and reason codes + PSI drift monitoring.
+      Built on a fully synthetic Metro 2®-style credit bureau dataset.
+    </p>
+
+    <div class="band-wrap">
+      <div class="band-labels"><span>Lower score</span><span>Higher score</span></div>
+      <div class="band-track">
+        <div class="band-seg" style="flex:33;background:#7A3F32;">DECLINE</div>
+        <div class="band-seg" style="flex:27;background:var(--copper);">REVIEW</div>
+        <div class="band-seg" style="flex:40;background:var(--teal);color:#060C17;">APPROVE</div>
+      </div>
+      <p class="band-note">Decision bands output alongside every score (illustrative proportions).</p>
+    </div>
+
+    <div class="tag-row">
+      <span>· Time-based validation</span>
+      <span>· Sigmoid calibration</span>
+      <span>· Scorecard (PDO) mapping</span>
+      <span>· Decision + reason codes</span>
+      <span>· PSI / drift monitoring</span>
+      <span>· 1,200 synthetic consumers</span>
+    </div>
+
+    <div class="card-links">
+      <a href="https://github.com/rohithdonthi/credit-underwriting-decisioning-system" target="_blank" style="color:var(--ink);">View on GitHub →</a>
+      <a href="https://credit-underwriting-decisioning-system-cdtsdqhdh5awgnmmtoyvnm.streamlit.app" target="_blank">Live demo →</a>
+    </div>
+  </div>
+
+  <!-- ENERGY CARD -->
+  <div class="project-card copper-card reveal">
+    <div class="project-visual project-visual-copper">
       <div>
-        <strong>Statistics Grader &amp; Mentor, Rutgers University</strong>
-        <p style="margin:0.3rem 0 0 0;color:var(--ink-soft);font-size:0.95rem;">Evaluated 200+ student assignments and built Python automation scripts reducing evaluation time by 30%.</p>
+        <div class="pv-label" style="color:var(--copper);">Energy Markets</div>
+        <div class="pv-title">Energy Market Forecasting &amp; Policy Analysis</div>
+      </div>
+      <div class="pv-stat">
+        <div class="big" style="color:var(--copper);">50</div>
+        <div class="small">states modeled</div>
       </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:140px 1fr;gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid var(--line);">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.82rem;color:var(--ink-soft);">Education</div>
-      <div>
-        <strong>MS Data Science - Statistics Track, Rutgers University</strong>
-        <p style="margin:0.3rem 0 0 0;color:var(--ink-soft);font-size:0.95rem;">Capstone thesis: U.S. state-level electricity generation mix forecasting using CLR transformation + VAR methodology across all 50 states.</p>
+    <p class="project-desc">
+      Forecasting how each U.S. state's electricity generation mix shifts year to year
+      using CLR-transformed compositional time series and per-state VAR models across 49
+      states — then rigorously benchmarking against the simplest possible baseline.
+    </p>
+
+    <div style="margin:1.5rem 0;">
+      <div class="mae-legend">
+        <span><span class="legend-dot" style="background:var(--copper);"></span>VAR forecast MAE</span>
+        <span><span class="legend-dot" style="background:#4A6080;"></span>Persistence baseline MAE</span>
+      </div>
+      <div class="mae-group">
+        <div class="mae-label">Natural Gas</div>
+        <div class="mae-track"><div class="mae-fill" style="width:46%;background:var(--copper);">19.3</div></div>
+        <div class="mae-track"><div class="mae-fill" style="width:8%;background:#4A6080;">3.2</div></div>
+      </div>
+      <div class="mae-group">
+        <div class="mae-label">Other Fossil</div>
+        <div class="mae-track"><div class="mae-fill" style="width:52%;background:var(--copper);">21.9</div></div>
+        <div class="mae-track"><div class="mae-fill" style="width:12%;background:#4A6080;">4.9</div></div>
+      </div>
+      <div class="mae-group">
+        <div class="mae-label">Nuclear &amp; Renewable</div>
+        <div class="mae-track"><div class="mae-fill" style="width:100%;background:var(--copper);">42.0</div></div>
+        <div class="mae-track"><div class="mae-fill" style="width:23%;background:#4A6080;">9.8</div></div>
+      </div>
+      <p style="font-size:0.75rem;color:var(--ink-soft);margin-top:0.5rem;">One-step-ahead MAE, 2023 forecast (percentage points) — lower is better.</p>
+      <div class="finding-box">
+        <strong>The baseline won.</strong> Annual generation shares move slowly, and ~30 yearly
+        observations per state isn't enough for multivariate VAR without overfitting. That result
+        shaped what I'd try next: exogenous covariates (policy, fuel prices), or pooling across states.
       </div>
     </div>
 
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:var(--ink-soft);margin-top:1.5rem;">
-      <strong style="color:var(--ink);">Certifications -</strong>
-      Bloomberg Market Concepts (BMC) · Financial Statistics &amp; Risk Management (FSRM)
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="wrap" style="padding-top:var(--sp-xl);padding-bottom:var(--sp-xl);border-top:1px solid var(--line);">
-    <p class="eyebrow">Skills</p>
-    <h2 style="font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:clamp(1.6rem,3.5vw,2.2rem);margin:0 0 var(--sp-lg) 0;">The full toolbox.</h2>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;">
-
-      <div class="skills-group">
-        <h4>🐍 Programming</h4>
-        <div class="skills-grid">
-          <span class="skill-chip">Python</span>
-          <span class="skill-chip">SQL</span>
-          <span class="skill-chip">R</span>
-          <span class="skill-chip">Java</span>
-        </div>
-      </div>
-
-      <div class="skills-group">
-        <h4>🧠 ML & Modeling</h4>
-        <div class="skills-grid">
-          <span class="skill-chip">scikit-learn</span>
-          <span class="skill-chip">XGBoost</span>
-          <span class="skill-chip">LightGBM</span>
-          <span class="skill-chip">TensorFlow</span>
-          <span class="skill-chip">statsmodels</span>
-          <span class="skill-chip">pandas</span>
-          <span class="skill-chip">NumPy</span>
-        </div>
-      </div>
-
-      <div class="skills-group">
-        <h4>📊 Analytics & BI</h4>
-        <div class="skills-grid">
-          <span class="skill-chip">Power BI</span>
-          <span class="skill-chip">Tableau</span>
-          <span class="skill-chip">Excel</span>
-          <span class="skill-chip">Matplotlib</span>
-          <span class="skill-chip">Seaborn</span>
-        </div>
-      </div>
-
-      <div class="skills-group">
-        <h4>☁️ Platforms & Tools</h4>
-        <div class="skills-grid">
-          <span class="skill-chip">AWS S3/EC2/Lambda</span>
-          <span class="skill-chip">Docker</span>
-          <span class="skill-chip">Git</span>
-          <span class="skill-chip">Streamlit</span>
-          <span class="skill-chip">Linux</span>
-          <span class="skill-chip">Jupyter</span>
-        </div>
-      </div>
-
-      <div class="skills-group">
-        <h4>📐 Statistical Methods</h4>
-        <div class="skills-grid">
-          <span class="skill-chip">Regression</span>
-          <span class="skill-chip">Time Series</span>
-          <span class="skill-chip">A/B Testing</span>
-          <span class="skill-chip">Hypothesis Testing</span>
-          <span class="skill-chip">Compositional Data</span>
-        </div>
-      </div>
-
-      <div class="skills-group">
-        <h4>🏦 Domain</h4>
-        <div class="skills-grid">
-          <span class="skill-chip">Credit Risk (PD/LGD)</span>
-          <span class="skill-chip">Model Monitoring</span>
-          <span class="skill-chip">Energy Markets</span>
-          <span class="skill-chip">Scorecard Dev</span>
-          <span class="skill-chip">PSI / Drift Detection</span>
-        </div>
-      </div>
-
+    <div class="tag-row">
+      <span>· 50 states analyzed (49 modeled)</span>
+      <span>· CLR transform</span>
+      <span>· Per-state VAR</span>
+      <span>· ADF + AIC / BIC / HQIC selection</span>
+      <span>· EIA 1990–2023</span>
     </div>
 
-    <div style="margin-top:var(--sp-lg);">
-      <p class="eyebrow" style="margin-bottom:0.8rem;">Code sample - PDO scorecard mapping</p>
-      <div class="code-block"><span class="cm"># Maps calibrated P(good) → interpretable scorecard score</span>
+    <div class="card-links">
+      <a href="https://github.com/rohithdonthi/Energy-Market-Forecasting-and-Policy-Impact-Analysis" target="_blank" style="color:var(--ink);">View on GitHub →</a>
+      <a href="energy_map.html" target="_blank" style="color:var(--copper);">Explore the data →</a>
+    </div>
+  </div>
+
+  <p style="font-size:0.88rem;margin-top:0.5rem;">
+    <a href="https://github.com/rohithdonthi" target="_blank">See more projects on GitHub →</a>
+  </p>
+</section>
+
+<!-- BACKGROUND -->
+<section id="background" class="wrap section">
+  <p class="eyebrow">Background</p>
+  <h2 class="section-heading">Where the experience comes from.</h2>
+
+  <div class="exp-row reveal">
+    <div class="exp-when">Oct–Dec 2025</div>
+    <div class="exp-what">
+      <strong>Data Science Intern, Synergy Resources</strong>
+      <p>Built a credit underwriting pipeline (logistic regression + gradient boosting) supporting a 50K+ account portfolio. AUC 0.87, with an estimated $180K in annualized savings.</p>
+    </div>
+  </div>
+  <div class="exp-row reveal">
+    <div class="exp-when">2 years</div>
+    <div class="exp-what">
+      <strong>Statistics Grader &amp; Mentor, Rutgers University</strong>
+      <p>Evaluated 200+ student assignments and built Python automation scripts reducing evaluation time by 30%.</p>
+    </div>
+  </div>
+  <div class="exp-row reveal">
+    <div class="exp-when">Education</div>
+    <div class="exp-what">
+      <strong>MS Data Science — Statistics Track, Rutgers University</strong>
+      <p>Capstone thesis: U.S. state-level electricity generation mix forecasting using CLR transformation + VAR methodology across all 50 states.</p>
+    </div>
+  </div>
+
+  <div class="certs reveal">
+    <strong>Certifications —</strong>
+    Bloomberg Market Concepts (BMC) · Financial Statistics &amp; Risk Management (FSRM)
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="wrap section">
+  <p class="eyebrow">Skills</p>
+  <h2 class="section-heading">The full toolbox.</h2>
+
+  <div class="skills-grid-outer reveal">
+    <div class="skill-group">
+      <h4>🐍 Programming</h4>
+      <div class="skill-chips">
+        <span class="chip">Python</span><span class="chip">SQL</span>
+        <span class="chip">R</span><span class="chip">Java</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>🧠 ML &amp; Modeling</h4>
+      <div class="skill-chips">
+        <span class="chip">scikit-learn</span><span class="chip">XGBoost</span>
+        <span class="chip">LightGBM</span><span class="chip">TensorFlow</span>
+        <span class="chip">statsmodels</span><span class="chip">pandas</span>
+        <span class="chip">NumPy</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>📊 Analytics &amp; BI</h4>
+      <div class="skill-chips">
+        <span class="chip">Power BI</span><span class="chip">Tableau</span>
+        <span class="chip">Excel</span><span class="chip">Matplotlib</span>
+        <span class="chip">Seaborn</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>☁️ Platforms</h4>
+      <div class="skill-chips">
+        <span class="chip">AWS S3/EC2/Lambda</span><span class="chip">Docker</span>
+        <span class="chip">Git</span><span class="chip">Streamlit</span>
+        <span class="chip">Linux</span><span class="chip">Jupyter</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>📐 Statistical Methods</h4>
+      <div class="skill-chips">
+        <span class="chip">Regression</span><span class="chip">Time Series</span>
+        <span class="chip">A/B Testing</span><span class="chip">Hypothesis Testing</span>
+        <span class="chip">Compositional Data</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>🏦 Domain</h4>
+      <div class="skill-chips">
+        <span class="chip">Credit Risk (PD/LGD)</span><span class="chip">Model Monitoring</span>
+        <span class="chip">Energy Markets</span><span class="chip">Scorecard Dev</span>
+        <span class="chip">PSI / Drift Detection</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="code-wrap reveal">
+    <p class="eyebrow" style="margin-bottom:0.75rem;">Code sample — PDO scorecard mapping</p>
+    <div class="code-block"><span class="cm"># Maps calibrated P(good) → interpretable scorecard score</span>
 <span class="cm"># PDO = 20 pts to double the odds | SCORE0 = 600 at ODDS0 = 50</span>
 <span class="kw">import</span> numpy <span class="kw">as</span> np
 
@@ -447,39 +887,178 @@
 
 <span class="cm"># P(good) = 0.09  →  score ≈ 421  →  DECLINE</span>
 <span class="cm"># P(good) = 0.86  →  score ≈ 650  →  APPROVE</span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="wrap section">
+  <p class="eyebrow">Contact</p>
+  <h2 class="section-heading">Open to Data Scientist, Analyst, and ML Engineer roles.</h2>
+  <p style="color:var(--ink-soft);max-width:520px;margin:0 0 1.5rem;line-height:1.65;">
+    Particularly interested in credit risk and energy market analytics — but always glad to talk
+    about rigorous, well-evaluated ML wherever it's needed.
+  </p>
+  <div class="contact-meta">
+    <span>✉️ rohith.donthi14@gmail.com</span>
+    <span>📍 Jersey City, NJ</span>
+  </div>
+  <div class="contact-btns">
+    <a href="https://www.linkedin.com/in/rohith-donthi" target="_blank" class="btn btn-primary">Connect on LinkedIn</a>
+    <a href="https://github.com/rohithdonthi" target="_blank" class="btn btn-ghost">GitHub</a>
+    <a href="MaharshiRohithDonthi_Resume.pdf" download class="btn btn-copper">Download Resume ↓</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>&copy; 2026 Maharshi Rohith Donthi</span>
+    <div class="footer-links">
+      <a href="https://github.com/rohithdonthi" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/rohith-donthi" target="_blank">LinkedIn</a>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- CONTACT -->
-  <section id="contact" class="wrap" style="padding-top:var(--sp-xl);padding-bottom:var(--sp-xl);border-top:1px solid var(--line);">
-    <p class="eyebrow">Contact</p>
-    <h2 style="font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:clamp(1.6rem,3.5vw,2.2rem);margin:0 0 1rem 0;">Open to Data Scientist, Data Analyst, and ML Engineer roles.</h2>
-    <p style="color:var(--ink-soft);max-width:520px;margin:0 0 1.8rem 0;">
-      Particularly interested in credit risk and energy market analytics - but always glad to talk about rigorous, well-evaluated ML wherever it's needed.
-    </p>
+<script>
+/* ═══════════════════════════════════════════════════════════
+   ENERGY GRID CANVAS — power grid topology simulation
+   Node colors map to the 3 fuel categories in the thesis:
+   Teal = Natural Gas (transition fuel)
+   Green = Nuclear & Renewable (clean energy)
+   Amber = Other Fossil (declining share)
+═══════════════════════════════════════════════════════════ */
+(function() {
+  const canvas = document.getElementById('grid-canvas');
+  const ctx = canvas.getContext('2d');
 
-    <div style="display:flex;flex-wrap:wrap;gap:2rem;font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:var(--ink-soft);margin-bottom:2rem;">
-      <span>✉️ rohith.donthi14@gmail.com</span>
-      <span>📍 Jersey City, NJ</span>
-    </div>
+  const COLORS = ['#00C4B4', '#1EC87A', '#E8834A'];
+  const COLOR_WEIGHTS = [0.4, 0.4, 0.2]; // energy transition weighting
+  const N = 65;
+  const CONNECT_DIST = 140;
+  const SPEED = 0.25;
 
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-      <a href="https://www.linkedin.com/in/rohith-donthi" target="_blank" style="font-family:'IBM Plex Mono',monospace;font-size:0.82rem;padding:0.65rem 1.1rem;background:var(--teal);color:#F2F1ED;border:1px solid var(--teal);border-radius:2px;border-bottom:1px solid var(--teal);">Connect on LinkedIn</a>
-      <a href="https://github.com/rohithdonthi" target="_blank" style="font-family:'IBM Plex Mono',monospace;font-size:0.82rem;padding:0.65rem 1.1rem;border:1px solid var(--ink);border-radius:2px;color:var(--ink);border-bottom:1px solid var(--ink);">GitHub</a>
-      <a href="MaharshiRohithDonthi_Resume.pdf" download style="font-family:'IBM Plex Mono',monospace;font-size:0.82rem;padding:0.65rem 1.1rem;border:1px solid var(--copper);border-radius:2px;color:var(--copper);border-bottom:1px solid var(--copper);">Download Resume ↓</a>
-    </div>
-  </section>
+  let W, H, particles;
 
-  <!-- FOOTER -->
-  <footer class="wrap" style="border-top:1px solid var(--line);padding-top:2.2rem;padding-bottom:2.2rem;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--ink-soft);">
-    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;align-items:center;">
-      <span>&copy; 2026 Maharshi Rohith Donthi</span>
-      <div style="display:flex;gap:1.2rem;">
-        <a href="https://github.com/rohithdonthi" target="_blank" style="color:var(--ink-soft);border-bottom:1px solid var(--line);">GitHub</a>
-        <a href="https://www.linkedin.com/in/rohith-donthi" target="_blank" style="color:var(--ink-soft);border-bottom:1px solid var(--line);">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
+  function weightedColor() {
+    const r = Math.random();
+    let cum = 0;
+    for (let i = 0; i < COLOR_WEIGHTS.length; i++) {
+      cum += COLOR_WEIGHTS[i];
+      if (r < cum) return COLORS[i];
+    }
+    return COLORS[0];
+  }
 
+  function createParticles() {
+    particles = Array.from({ length: N }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * SPEED,
+      vy: (Math.random() - 0.5) * SPEED * 0.6,
+      r: Math.random() * 2 + 1,
+      color: weightedColor(),
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: 0.02 + Math.random() * 0.02,
+    }));
+  }
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    createParticles();
+  }
+
+  function hexToRgb(hex) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `${r},${g},${b}`;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Update and draw particles
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.pulse += p.pulseSpeed;
+
+      // Wrap
+      if (p.x < -10) p.x = W + 10;
+      if (p.x > W + 10) p.x = -10;
+      if (p.y < -10) p.y = H + 10;
+      if (p.y > H + 10) p.y = -10;
+
+      // Draw connections
+      for (let j = i + 1; j < particles.length; j++) {
+        const q = particles[j];
+        const dx = p.x - q.x;
+        const dy = p.y - q.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < CONNECT_DIST) {
+          const alpha = (1 - dist / CONNECT_DIST) * 0.35;
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(${hexToRgb(p.color)},${alpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.stroke();
+        }
+      }
+
+      // Draw node
+      const pulse = 0.6 + 0.4 * Math.sin(p.pulse);
+      const alpha = 0.5 + 0.5 * pulse;
+      const radius = p.r * (0.8 + 0.4 * pulse);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${hexToRgb(p.color)},${alpha})`;
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   3D CARD TILT — subtle perspective effect on project cards
+═══════════════════════════════════════════════════════════ */
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) / (rect.width / 2);
+    const dy = (e.clientY - cy) / (rect.height / 2);
+    const rotY = dx * 5;
+    const rotX = -dy * 3;
+    card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(6px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+/* ═══════════════════════════════════════════════════════════
+   SCROLL REVEAL — fade in sections as they enter viewport
+═══════════════════════════════════════════════════════════ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
