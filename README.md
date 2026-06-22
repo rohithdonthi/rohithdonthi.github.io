@@ -1,6 +1,6 @@
 # rohithdonthi.github.io
 
-Personal portfolio site for **Maharshi Rohith Donthi** — MS Data Science (Statistics Track), Rutgers University.
+Personal portfolio site for **Maharshi Rohith Donthi**: MS Data Science (Statistics Track), Rutgers University.
 
 🌐 **Live site:** [rohithdonthi.github.io](https://rohithdonthi.github.io)
 
@@ -8,9 +8,9 @@ Personal portfolio site for **Maharshi Rohith Donthi** — MS Data Science (Stat
 
 ## About
 
-Data Scientist specializing in credit risk modeling and energy market analytics. This portfolio is built with plain HTML/CSS — no frameworks, no build tools, just fast and clean.
+Data Scientist specializing in credit risk modeling and energy market analytics. This portfolio is built with plain HTML/CSS - no frameworks, no build tools, just fast and clean.
 
-The design philosophy: let the work speak. The headline isn't credentials — it's the honest finding from my MS thesis: a persistence baseline outperformed the VAR model across all three fuel categories. That result, and the explanation of why it's correct, is what the site leads with.
+The design philosophy: let the work speak. The headline isn't credentials - it's the honest finding from my MS thesis: a persistence baseline outperformed the VAR model across all three fuel categories. That result, and the explanation of why it's correct, is what the site leads with.
 
 ---
 
@@ -33,7 +33,7 @@ End-to-end underwriting pipeline: calibrated PD model → PDO/ODDS scorecard →
 - [GitHub repo](https://github.com/rohithdonthi/credit-underwriting-decisioning-system) · [Live Streamlit demo](https://credit-underwriting-decisioning-system-cdtsdqhdh5awgnmmtoyvnm.streamlit.app)
 
 **Energy Market Forecasting & Policy Analysis**
-Compositional time-series forecasting of U.S. electricity generation mix across all 50 states (EIA data, 1990–2023). CLR transformation + per-state VAR with AIC-based lag selection. Honestly benchmarked against a persistence baseline — the baseline won.
+Compositional time-series forecasting of U.S. electricity generation mix across all 50 states (EIA data, 1990–2023). CLR transformation + per-state VAR with AIC-based lag selection. Honestly benchmarked against a persistence baseline - the baseline won.
 - [GitHub repo](https://github.com/rohithdonthi/Energy-Market-Forecasting-and-Policy-Impact-Analysis) · [Interactive map](https://rohithdonthi.github.io/energy_map.html)
 
 ---
