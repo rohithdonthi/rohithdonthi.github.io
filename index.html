@@ -3,467 +3,677 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rohith Donthi (Data Scientist)</title>
+<title>Rohith Donthi - Data Scientist</title>
 <meta name="description" content="Maharshi Rohith Donthi - MS Data Science, Rutgers. Credit risk modeling and energy market analytics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans+Condensed:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ─── DESIGN TOKENS ─────────────────────────────────── */
+/* ─── TOKENS ─────────────────────────────── */
 :root {
-  --white:   #FFFFFF;
-  --off:     #F7F6F2;
-  --ink:     #0D0D0B;
-  --mid:     #6B6860;
-  --faint:   #E4E2DA;
-  --g:       #1A5C38;   /* forest green — primary accent */
-  --g-light: #EBF5EF;   /* green tint */
-  --a:       #9C6A00;   /* amber — energy, secondary */
-  --a-light: #FEF7E8;   /* amber tint */
-  --r:       #7A2E20;   /* rust — decline */
+  --bg:      #FFFFFF;
+  --bg2:     #F4F6FB;
+  --bg3:     #EBEEf7;
+  --ink:     #0A1628;
+  --mid:     #556070;
+  --soft:    #8898AA;
+  --line:    #D8DCE8;
+  --navy:    #0A1E3C;
+  --teal:    #0A7A6C;
+  --teal-l:  #E6F4F2;
+  --amber:   #B86E00;
+  --amber-l: #FEF4E6;
+  --green:   #1A7040;
+  --green-l: #E8F4EE;
+  --rust:    #922B1A;
+  --blue:    #1C5CB4;
+  --blue-l:  #EBF1FB;
   --mono: 'IBM Plex Mono', monospace;
   --cond: 'IBM Plex Sans Condensed', sans-serif;
   --body: 'IBM Plex Sans', system-ui, sans-serif;
-  --mw: 1060px;
+  --mw: 1080px;
 }
 
-/* ─── RESET ──────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  background:var(--white);
-  color:var(--ink);
-  font-family:var(--body);
-  font-size:16px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-.w{max-width:var(--mw);margin:0 auto;padding:0 2rem}
-a{color:var(--g);text-decoration:none;border-bottom:1px solid currentColor;transition:opacity .15s}
-a:hover{opacity:.6}
-img{display:block}
 
-/* ─── NAV ─────────────────────────────────────────────── */
+body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    linear-gradient(rgba(10,30,56,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,30,56,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.w{max-width:var(--mw);margin:0 auto;padding:0 2rem}
+
+/* ─── NAV ────────────────────────────────── */
 .nav{
   position:sticky;top:0;z-index:100;
-  background:rgba(255,255,255,.95);
+  background:rgba(255,255,255,0.96);
   backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--faint);
+  border-bottom:1px solid var(--line);
 }
 .nav-i{
   display:flex;align-items:center;
   justify-content:space-between;
-  padding:.75rem 0;
+  padding:.7rem 0;
 }
 .logo{
-  font-family:var(--mono);font-size:.78rem;
-  font-weight:500;color:var(--ink);
+  font-family:var(--mono);font-size:.76rem;
+  font-weight:600;color:var(--ink);
   letter-spacing:.05em;
 }
-.links{display:flex;gap:2rem;list-style:none}
-.links a{
-  font-family:var(--mono);font-size:.72rem;
-  color:var(--mid);border-bottom:none;
-  letter-spacing:.03em;
+.logo em{color:var(--teal);font-style:normal}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{
+  font-family:var(--mono);font-size:.7rem;
+  color:var(--mid);text-decoration:none;
+  border-bottom:none;letter-spacing:.03em;
+  transition:color .15s;
 }
-.links a:hover{color:var(--g);opacity:1}
+.nav-links a:hover{color:var(--teal)}
 
-/* ─── HERO ─────────────────────────────────────────────── */
+/* ─── HERO ───────────────────────────────── */
 .hero{
-  padding:5.5rem 0 0;
+  padding:4.5rem 0 0;
   border-bottom:2px solid var(--ink);
 }
-.hero-body{
+.hero-main{
   display:grid;
-  grid-template-columns:1fr 160px;
-  gap:3rem;
-  align-items:end;
+  grid-template-columns:1fr 180px;
+  gap:3rem;align-items:center;
   padding-bottom:3rem;
 }
-.hero-tag{
-  font-family:var(--mono);
-  font-size:.68rem;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--mid);
-  margin-bottom:1.2rem;
+.hero-eyebrow{
+  font-family:var(--mono);font-size:.65rem;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:1rem;
+  display:flex;align-items:center;gap:.7rem;
+}
+.hero-eyebrow::before{
+  content:'';display:inline-block;
+  width:24px;height:1px;background:var(--teal);
 }
 .hero-h{
-  font-family:var(--cond);
-  font-weight:700;
-  font-size:clamp(2.8rem,6.5vw,5.2rem);
-  line-height:.97;
-  letter-spacing:-.01em;
-  margin-bottom:1.6rem;
+  font-family:var(--cond);font-weight:700;
+  font-size:clamp(2.8rem,6vw,5rem);
+  line-height:.96;letter-spacing:-.01em;
+  margin-bottom:1.4rem;
 }
-.hero-h .accent{color:var(--g)}
-.hero-sub{
-  font-size:1rem;
-  color:var(--mid);
-  max-width:500px;
-  line-height:1.75;
+.hero-h .t{color:var(--teal)}
+.hero-h .a{color:var(--amber)}
+.hero-p{
+  font-size:.97rem;color:var(--mid);
+  max-width:500px;line-height:1.8;
   margin-bottom:1.8rem;
 }
-.hero-sub strong{color:var(--ink);font-weight:600}
+.hero-p strong{color:var(--ink);font-weight:600}
 .btns{display:flex;gap:.6rem;flex-wrap:wrap}
 .btn{
-  font-family:var(--mono);font-size:.74rem;
+  font-family:var(--mono);font-size:.72rem;
   padding:.5rem .95rem;border-radius:2px;
-  border-bottom:none;letter-spacing:.02em;
-  transition:background .15s,color .15s,border-color .15s;
+  text-decoration:none;border-bottom:none;
+  letter-spacing:.02em;transition:all .15s;
 }
-.btn-g{background:var(--g);color:#fff;border:1px solid var(--g)}
-.btn-g:hover{background:#124228;opacity:1}
-.btn-o{background:transparent;color:var(--ink);border:1px solid var(--faint)}
+.btn-p{
+  background:var(--teal);color:#fff;
+  border:1px solid var(--teal);font-weight:600;
+}
+.btn-p:hover{background:#085F54;opacity:1}
+.btn-o{
+  background:transparent;color:var(--ink);
+  border:1px solid var(--line);
+}
 .btn-o:hover{border-color:var(--ink);opacity:1}
-.photo img{
-  width:160px;height:160px;
-  object-fit:cover;border-radius:2px;
-  border:1px solid var(--faint);
-  filter:saturate(.85)contrast(1.05);
+.btn-a{
+  background:transparent;color:var(--amber);
+  border:1px solid var(--amber);
 }
-.photo-fb{
-  display:none;width:160px;height:160px;
-  border:1px solid var(--faint);background:var(--off);
-  border-radius:2px;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:.62rem;color:var(--mid);
-  text-align:center;padding:.75rem;
+.btn-a:hover{background:var(--amber-l);opacity:1}
+
+.hero-photo img{
+  width:180px;height:180px;
+  object-fit:cover;border-radius:3px;
+  border:1px solid var(--line);
+  filter:saturate(.85)contrast(1.05);
+  display:block;
+}
+.hero-photo-fb{
+  display:none;width:180px;height:180px;
+  border:1px solid var(--line);background:var(--bg2);
+  border-radius:3px;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.62rem;
+  color:var(--soft);text-align:center;padding:.75rem;
 }
 
-/* KPI strip */
-.kpis{
+/* ─── KPI DASHBOARD ROW ──────────────────── */
+.kpi-row{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--faint);
+  border-top:1px solid var(--line);
 }
-.kpi{
+.kpi-card{
   padding:1.4rem 1.6rem;
-  border-right:1px solid var(--faint);
+  border-right:1px solid var(--line);
+  position:relative;overflow:hidden;
+  transition:background .2s;
 }
-.kpi:last-child{border-right:none}
+.kpi-card:hover{background:var(--bg2)}
+.kpi-card:last-child{border-right:none}
+.kpi-card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:3px;
+  background:var(--kc,var(--teal));
+}
 .kpi-n{
   font-family:var(--cond);font-weight:700;
   font-size:2.4rem;line-height:1;
-  margin-bottom:.25rem;
+  color:var(--kc,var(--teal));margin-bottom:.2rem;
 }
 .kpi-l{
-  font-family:var(--mono);font-size:.62rem;
+  font-family:var(--mono);font-size:.6rem;
   letter-spacing:.08em;text-transform:uppercase;
   color:var(--mid);line-height:1.45;
 }
+.kpi-s{
+  font-family:var(--mono);font-size:.56rem;
+  color:var(--kc,var(--teal));opacity:.75;
+  margin-top:.15rem;
+}
 
-/* ─── SECTIONS ─────────────────────────────────────────── */
-.sec{padding:5rem 0;border-bottom:1px solid var(--faint)}
-.sec-mark{
-  font-family:var(--mono);font-size:.65rem;
+/* ─── SECTION BASICS ─────────────────────── */
+.sec{padding:4.5rem 0;border-bottom:1px solid var(--line)}
+.sec-num{
+  font-family:var(--mono);font-size:.6rem;
   letter-spacing:.14em;text-transform:uppercase;
-  color:var(--mid);margin-bottom:.5rem;
+  color:var(--soft);margin-bottom:.35rem;
 }
 .sec-h{
   font-family:var(--cond);font-weight:700;
-  font-size:clamp(1.55rem,2.8vw,2rem);
-  line-height:1.1;margin-bottom:2.5rem;
+  font-size:clamp(1.5rem,2.8vw,2rem);
+  line-height:1.05;margin-bottom:2.5rem;
 }
 
-/* ─── THE FINDING ──────────────────────────────────────── */
-.finding-wrap{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:3rem;
-  align-items:start;
+/* ─── FINDING SECTION ────────────────────── */
+.finding-layout{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3rem;align-items:start;
 }
-.finding-lede{
-  font-size:1rem;color:var(--mid);
+.f-body{
+  font-size:.96rem;color:var(--mid);
   line-height:1.8;
 }
-.finding-lede strong{color:var(--ink);font-weight:600}
-.finding-lede + .finding-lede{margin-top:1rem}
-
-/* MAE table */
-.mae{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.82rem}
-.mae th{
-  text-align:left;padding:.4rem .6rem .4rem 0;
-  font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--mid);font-weight:500;
-  border-bottom:2px solid var(--ink);
-}
-.mae td{
-  padding:.6rem .6rem .6rem 0;
-  border-bottom:1px solid var(--faint);
-  vertical-align:middle;
-}
-.mae tr:last-child td{border-bottom:none}
-.mae .cat{color:var(--ink)}
-.mae .var{color:var(--a);font-weight:600}
-.mae .base{color:var(--g);font-weight:600}
-.win{
-  font-size:.6rem;background:var(--g);
-  color:#fff;padding:.12rem .45rem;
-  border-radius:2px;margin-left:.3rem;
-  vertical-align:middle;display:inline-block;
-}
-.finding-note{
-  margin-top:1.5rem;
-  background:var(--g-light);
-  border-left:3px solid var(--g);
-  padding:.9rem 1rem;
-  font-size:.88rem;color:var(--mid);
-  line-height:1.65;
+.f-body+.f-body{margin-top:1rem}
+.f-body strong{color:var(--ink);font-weight:600}
+.f-note{
+  margin-top:1.5rem;background:var(--teal-l);
+  border-left:3px solid var(--teal);
+  padding:.85rem 1rem;font-size:.87rem;
+  color:var(--mid);line-height:1.65;
   border-radius:0 2px 2px 0;
 }
-.finding-note strong{color:var(--g)}
+.f-note strong{color:var(--teal)}
 
-/* ─── PROJECTS ─────────────────────────────────────────── */
-.project{
+/* Research data table */
+.data-card{
+  border:1px solid var(--line);border-radius:3px;
+  overflow:hidden;background:var(--bg);
+  box-shadow:0 2px 12px rgba(10,30,56,0.06);
+}
+.data-card-hd{
+  padding:.65rem 1rem;background:var(--bg2);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;
+  justify-content:space-between;
+}
+.data-card-hd span{
+  font-family:var(--mono);font-size:.6rem;
+  letter-spacing:.09em;text-transform:uppercase;
+  color:var(--mid);
+}
+.data-card-hd .badge{
+  background:var(--teal-l);color:var(--teal);
+  font-size:.58rem;padding:.12rem .4rem;border-radius:2px;
+}
+.data-tbl{width:100%;border-collapse:collapse}
+.data-tbl th{
+  padding:.5rem 1rem;text-align:left;
+  font-family:var(--mono);font-size:.6rem;
+  letter-spacing:.09em;text-transform:uppercase;
+  color:var(--mid);background:var(--bg2);
+  border-bottom:2px solid var(--line);
+}
+.data-tbl td{
+  padding:.6rem 1rem;font-family:var(--mono);
+  font-size:.8rem;border-bottom:1px solid var(--bg2);
+}
+.data-tbl tr:last-child td{border-bottom:none}
+.data-tbl tr:hover td{background:var(--bg2)}
+.data-tbl td:first-child{color:var(--ink);font-weight:500}
+.v{color:var(--amber);font-weight:600}
+.b{color:var(--teal);font-weight:600}
+.win{
+  font-size:.58rem;background:var(--teal);
+  color:#fff;padding:.1rem .38rem;
+  border-radius:2px;font-weight:600;
+}
+.data-card-ft{
+  padding:.5rem 1rem;background:var(--bg2);
+  border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:.58rem;
+  color:var(--soft);
+}
+
+/* ─── WORK SECTION ───────────────────────── */
+.work-cards{
   display:grid;
-  grid-template-columns:4px 1fr;
-
-  border:1px solid var(--faint);
-  border-radius:2px;
-  overflow:hidden;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
   margin-bottom:1.5rem;
-  background:var(--off);
 }
-.p-stripe{}
-.p-body{padding:2rem}
-.p-tag{
-  font-family:var(--mono);font-size:.62rem;
-  letter-spacing:.12em;text-transform:uppercase;
-  margin-bottom:.35rem;
+.work-card{
+  border:1px solid var(--line);border-radius:3px;
+  background:var(--bg);overflow:hidden;
+  box-shadow:0 2px 8px rgba(10,30,56,0.05);
+  transition:box-shadow .2s,transform .2s;
 }
-.p-title{
+.work-card:hover{
+  box-shadow:0 8px 28px rgba(10,30,56,0.1);
+  transform:translateY(-2px);
+}
+.wc-head{
+  background:var(--bg2);border-bottom:1px solid var(--line);
+  padding:1rem 1.2rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.wc-accent{
+  width:4px;height:2.5rem;border-radius:2px;
+  flex-shrink:0;
+}
+.wc-domain{
+  font-family:var(--mono);font-size:.6rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:.2rem;
+}
+.wc-title{
   font-family:var(--cond);font-weight:700;
-  font-size:1.45rem;color:var(--ink);
-  margin-bottom:.75rem;
+  font-size:1.15rem;color:var(--ink);
 }
-.p-desc{
-  color:var(--mid);font-size:.95rem;
-  line-height:1.7;margin-bottom:1.4rem;max-width:640px;
+.wc-kpi{
+  margin-left:auto;text-align:right;flex-shrink:0;
 }
-
-/* Decision band */
-.band-labels{
+.wc-kn{
+  font-family:var(--mono);font-weight:600;
+  font-size:1.8rem;line-height:1;
+}
+.wc-kl{
+  font-family:var(--mono);font-size:.58rem;
+  color:var(--mid);text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.wc-body{padding:1.2rem}
+.wc-desc{
+  color:var(--mid);font-size:.92rem;
+  line-height:1.7;margin-bottom:1.1rem;
+}
+.band-lb{
   display:flex;justify-content:space-between;
-  font-family:var(--mono);font-size:.62rem;color:var(--mid);
-  margin-bottom:.25rem;
+  font-family:var(--mono);font-size:.58rem;
+  color:var(--soft);margin-bottom:.2rem;
 }
-.band{display:flex;height:1.7rem;border-radius:2px;overflow:hidden;margin-bottom:.25rem}
-.band-seg{
+.band{
+  display:flex;height:1.6rem;
+  border-radius:2px;overflow:hidden;
+  margin-bottom:.2rem;
+}
+.band-s{
   display:flex;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:.64rem;
-  letter-spacing:.06em;color:rgba(255,255,255,.88);font-weight:500;
+  font-family:var(--mono);font-size:.62rem;
+  letter-spacing:.06em;color:rgba(255,255,255,.9);
+  font-weight:600;
 }
-.band-note{font-family:var(--mono);font-size:.64rem;color:var(--mid);margin-bottom:1.2rem}
-
+.band-n{
+  font-family:var(--mono);font-size:.6rem;
+  color:var(--soft);margin-bottom:1rem;
+}
 .tags{
-  display:flex;flex-wrap:wrap;gap:.3rem .7rem;
-  font-family:var(--mono);font-size:.7rem;
-  color:var(--mid);margin-bottom:1.2rem;
+  display:flex;flex-wrap:wrap;gap:.25rem .65rem;
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--soft);margin-bottom:1rem;
 }
-.p-links{
-  display:flex;gap:1.2rem;font-family:var(--mono);
-  font-size:.8rem;font-weight:500;
-  padding-top:1rem;border-top:1px solid var(--faint);
+.wc-links{
+  display:flex;gap:1rem;font-family:var(--mono);
+  font-size:.76rem;font-weight:500;
+  padding-top:.9rem;border-top:1px solid var(--line);
+}
+.wc-links a{
+  text-decoration:none;border-bottom:1px solid currentColor;
 }
 
 /* Map callout */
-.map-bar{
-  background:var(--ink);color:var(--white);
-  border-radius:2px;padding:1.6rem 2rem;
+.map-cta{
+  background:var(--navy);border-radius:3px;
+  padding:1.4rem 1.8rem;
   display:flex;align-items:center;
   justify-content:space-between;gap:2rem;
-  margin-bottom:1rem;
 }
-.map-bar-h{
+.map-cta-h{
   font-family:var(--cond);font-weight:700;
-  font-size:1.2rem;margin-bottom:.3rem;
+  font-size:1.1rem;color:#fff;margin-bottom:.25rem;
 }
-.map-bar-s{
-  font-family:var(--mono);font-size:.7rem;
+.map-cta-s{
+  font-family:var(--mono);font-size:.65rem;
   color:rgba(255,255,255,.5);line-height:1.5;
 }
 .map-btn{
-  font-family:var(--mono);font-size:.76rem;
-  font-weight:500;padding:.55rem 1.1rem;
-  background:var(--g);color:#fff;
-  border-radius:2px;border-bottom:none;
-  white-space:nowrap;flex-shrink:0;
-  border:1px solid var(--g);
+  font-family:var(--mono);font-size:.72rem;
+  font-weight:600;padding:.5rem 1rem;
+  background:var(--teal);color:#fff;
+  border-radius:2px;text-decoration:none;
+  border-bottom:none;white-space:nowrap;
+  flex-shrink:0;transition:background .15s;
+  border:1px solid var(--teal);
 }
-.map-btn:hover{background:#124228;opacity:1}
+.map-btn:hover{background:#085F54;opacity:1}
 
-/* ─── ABOUT ────────────────────────────────────────────── */
+/* ─── ABOUT ──────────────────────────────── */
 .about-cols{display:grid;grid-template-columns:3fr 2fr;gap:4rem}
-.a-body{color:var(--mid);font-size:.97rem;line-height:1.8}
-.a-body+.a-body{margin-top:1rem}
-.a-body strong{color:var(--ink);font-weight:600}
-.facts{display:flex;flex-direction:column;gap:1.3rem}
-.fact{border-left:2px solid var(--faint);padding-left:.9rem}
+.ab{color:var(--mid);font-size:.96rem;line-height:1.8}
+.ab+.ab{margin-top:1rem}
+.ab strong{color:var(--ink);font-weight:600}
+.facts{display:flex;flex-direction:column;gap:1.2rem}
+.fact{border-left:2px solid var(--line);padding-left:.9rem}
 .fk{
-  font-family:var(--mono);font-size:.62rem;
+  font-family:var(--mono);font-size:.58rem;
   letter-spacing:.1em;text-transform:uppercase;
-  color:var(--mid);margin-bottom:.15rem;
+  color:var(--soft);margin-bottom:.15rem;
 }
-.fv{font-family:var(--mono);font-size:.8rem;color:var(--ink);line-height:1.45}
+.fv{font-family:var(--mono);font-size:.78rem;color:var(--ink);line-height:1.4}
 .dot{
   display:inline-block;width:6px;height:6px;
-  border-radius:50%;background:var(--g);
+  border-radius:50%;background:var(--green);
   margin-right:.4rem;vertical-align:middle;
   animation:bl 2.2s ease-in-out infinite;
 }
 @keyframes bl{0%,100%{opacity:1}50%{opacity:.2}}
 
-/* ─── EXPERIENCE ───────────────────────────────────────── */
-.exp{display:flex;flex-direction:column}
+/* ─── EXPERIENCE ─────────────────────────── */
 .exp-row{
   display:grid;grid-template-columns:130px 1fr;
   gap:1.5rem;padding:1.2rem 0;
-  border-bottom:1px solid var(--faint);
+  border-bottom:1px solid var(--line);
 }
-.exp-row:first-child{padding-top:0}
 .exp-row:last-child{border-bottom:none}
-.e-when{font-family:var(--mono);font-size:.72rem;color:var(--mid);padding-top:2px}
-.e-role{font-weight:600;color:var(--ink);margin-bottom:.25rem}
-.e-desc{font-size:.92rem;color:var(--mid);line-height:1.65}
+.e-w{font-family:var(--mono);font-size:.7rem;color:var(--mid);padding-top:2px}
+.e-r{font-weight:600;color:var(--ink);margin-bottom:.2rem}
+.e-d{font-size:.92rem;color:var(--mid);line-height:1.65}
 .certs{
-  font-family:var(--mono);font-size:.76rem;
+  font-family:var(--mono);font-size:.74rem;
   color:var(--mid);margin-top:1.4rem;
-  padding-top:1.2rem;border-top:1px solid var(--faint);
+  padding-top:1.2rem;border-top:1px solid var(--line);
 }
 .certs strong{color:var(--ink)}
 
-/* ─── SKILLS ───────────────────────────────────────────── */
-.skills-g{
+/* ─── SKILLS ─────────────────────────────── */
+.skills-outer{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-  gap:2rem;
+  grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
+  gap:1.8rem;
 }
 .sg h4{
-  font-family:var(--mono);font-size:.62rem;
+  font-family:var(--mono);font-size:.58rem;
   letter-spacing:.1em;text-transform:uppercase;
   color:var(--mid);margin-bottom:.65rem;
-  padding-bottom:.45rem;border-bottom:1px solid var(--faint);
+  padding-bottom:.45rem;border-bottom:1px solid var(--line);
 }
 .chips{display:flex;flex-wrap:wrap;gap:.3rem}
 .chip{
-  font-family:var(--mono);font-size:.7rem;
-  padding:.22rem .55rem;border:1px solid var(--faint);
-  border-radius:2px;color:var(--ink);background:var(--white);
+  font-family:var(--mono);font-size:.68rem;
+  padding:.22rem .55rem;border:1px solid var(--line);
+  border-radius:2px;color:var(--ink);background:var(--bg);
   transition:border-color .15s,color .15s;
 }
-.chip:hover{border-color:var(--g);color:var(--g)}
-
-/* Code block */
+.chip:hover{border-color:var(--teal);color:var(--teal)}
 .code-cap{
-  font-family:var(--mono);font-size:.62rem;
+  font-family:var(--mono);font-size:.58rem;
   letter-spacing:.1em;text-transform:uppercase;
   color:var(--mid);margin-bottom:.5rem;margin-top:3rem;
 }
 pre.code{
-  background:#0D0D0B;color:#C8D4E0;
+  background:var(--navy);color:#C8D8EC;
   border-radius:2px;padding:1.2rem 1.5rem;
   font-family:var(--mono);font-size:.78rem;
   line-height:1.8;overflow-x:auto;
 }
-.kw{color:#7EC8A0}.fn{color:#79B8FF}.nm{color:#E8834A}.cm{color:#3D4E5C}
+.kw{color:#7EC8A0}.fn{color:#79B8FF}.nm{color:#F0A020}.cm{color:#3D4E60}
 
-/* ─── DEMO ─────────────────────────────────────────────── */
-.demo-g{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:2rem;margin-bottom:1.4rem;
+/* ─── DEMO ───────────────────────────────── */
+.demo-outer{
+  background:var(--bg2);border:1px solid var(--line);
+  border-radius:3px;overflow:hidden;
 }
-.demo-in{display:flex;flex-direction:column;gap:1.5rem}
+.demo-bar{
+  padding:.65rem 1.2rem;background:var(--bg3);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:.8rem;
+}
+.demo-bar-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--teal);
+}
+.demo-bar span{
+  font-family:var(--mono);font-size:.62rem;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--mid);
+}
+.demo-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:2rem;padding:1.5rem;
+}
+.demo-in{display:flex;flex-direction:column;gap:1.4rem}
 .df{display:flex;flex-direction:column;gap:.4rem}
 .df-top{display:flex;justify-content:space-between;align-items:baseline}
 .dlabel{
-  font-family:var(--mono);font-size:.65rem;
+  font-family:var(--mono);font-size:.62rem;
   letter-spacing:.08em;text-transform:uppercase;color:var(--mid);
 }
-.dval{font-family:var(--mono);font-size:.85rem;font-weight:500;color:var(--ink)}
+.dval{font-family:var(--mono);font-size:.82rem;font-weight:500;color:var(--ink)}
 input[type=range].sl{
   -webkit-appearance:none;width:100%;
-  height:3px;background:var(--faint);border-radius:2px;outline:none;
+  height:3px;background:var(--line);border-radius:2px;outline:none;
 }
 input[type=range].sl::-webkit-slider-thumb{
-  -webkit-appearance:none;width:15px;height:15px;
-  border-radius:50%;background:var(--g);cursor:pointer;
+  -webkit-appearance:none;width:14px;height:14px;
+  border-radius:50%;background:var(--teal);cursor:pointer;
 }
 .rl{
   display:flex;justify-content:space-between;
-  font-family:var(--mono);font-size:.58rem;color:var(--faint);
+  font-family:var(--mono);font-size:.56rem;color:var(--line);
 }
 .demo-out{
-  background:var(--off);border:1px solid var(--faint);
-  border-radius:2px;padding:1.5rem;
-  display:flex;flex-direction:column;gap:1.2rem;
+  background:var(--bg);border:1px solid var(--line);
+  border-radius:2px;padding:1.3rem;
+  display:flex;flex-direction:column;gap:1.1rem;
 }
-.score-blk{text-align:center;padding-bottom:1rem;border-bottom:1px solid var(--faint)}
-.score-cap{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.3rem}
+.score-blk{
+  text-align:center;padding-bottom:.9rem;
+  border-bottom:1px solid var(--line);
+}
+.score-cap{
+  font-family:var(--mono);font-size:.56rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mid);margin-bottom:.25rem;
+}
 .score-n{
-  font-family:var(--cond);font-weight:700;font-size:4.5rem;
-  line-height:1;color:var(--ink);transition:color .3s;
+  font-family:var(--mono);font-weight:600;
+  font-size:4rem;line-height:1;
+  color:var(--teal);transition:color .3s;
 }
-.score-sub{font-family:var(--mono);font-size:.6rem;color:var(--mid);margin-top:.25rem}
+.score-sub{
+  font-family:var(--mono);font-size:.56rem;
+  color:var(--mid);margin-top:.2rem;
+}
 .dec-blk{text-align:center}
 .dec{
-  display:inline-block;font-family:var(--mono);font-size:.8rem;
-  font-weight:600;letter-spacing:.1em;padding:.38rem 1.2rem;
-  border-radius:2px;margin-bottom:.35rem;transition:background .3s,color .3s;
+  display:inline-block;font-family:var(--mono);
+  font-size:.76rem;font-weight:600;letter-spacing:.1em;
+  padding:.35rem 1.1rem;border-radius:2px;
+  margin-bottom:.3rem;transition:background .3s,color .3s;
 }
-.pd-line{font-family:var(--mono);font-size:.72rem;color:var(--mid)}
-.rc-cap{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.35rem}
-.rc-list{display:flex;flex-direction:column;gap:.25rem}
+.pd-line{font-family:var(--mono);font-size:.7rem;color:var(--mid)}
+.rc-cap{
+  font-family:var(--mono);font-size:.56rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mid);margin-bottom:.3rem;
+}
+.rc-list{display:flex;flex-direction:column;gap:.2rem}
 .rc{
-  font-family:var(--mono);font-size:.72rem;color:var(--mid);
-  padding-left:.75rem;border-left:2px solid var(--faint);
+  font-family:var(--mono);font-size:.7rem;color:var(--mid);
+  padding-left:.7rem;border-left:2px solid var(--line);
 }
 .demo-note{
-  font-size:.84rem;color:var(--mid);line-height:1.65;
-  background:var(--g-light);border-left:3px solid var(--g);
-  padding:.8rem 1rem;border-radius:0 2px 2px 0;
+  padding:1rem 1.2rem;background:var(--bg);
+  border-top:1px solid var(--line);
+  font-size:.83rem;color:var(--mid);line-height:1.65;
 }
 .demo-note strong{color:var(--ink)}
+.demo-note a{color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal)}
 
-/* ─── CONTACT ──────────────────────────────────────────── */
-.contact-g{display:grid;grid-template-columns:3fr 2fr;gap:4rem;align-items:start}
+/* ─── CONTACT ────────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:3fr 2fr;gap:4rem;align-items:start}
 .c-h{
   font-family:var(--cond);font-weight:700;
   font-size:clamp(1.4rem,2.5vw,1.85rem);
   line-height:1.15;margin-bottom:1rem;
 }
-.c-body{color:var(--mid);font-size:.96rem;line-height:1.75;margin-bottom:1.5rem}
-.c-details{display:flex;flex-direction:column;gap:1.2rem}
+.c-body{color:var(--mid);font-size:.95rem;line-height:1.75;margin-bottom:1.4rem}
+.c-det{display:flex;flex-direction:column;gap:1.1rem}
 .cd{display:flex;flex-direction:column;gap:.1rem}
-.ck{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
-.cv{font-family:var(--mono);font-size:.8rem;color:var(--ink);line-height:1.4}
-.cv a{color:var(--g)}
+.ck{
+  font-family:var(--mono);font-size:.58rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--soft);
+}
+.cv{font-family:var(--mono);font-size:.78rem;color:var(--ink);line-height:1.4}
+.cv a{color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal)}
 
-/* ─── FOOTER ───────────────────────────────────────────── */
+/* ─── FOOTER ─────────────────────────────── */
 footer{
-  padding:1.8rem 0;
-  border-top:2px solid var(--ink);
+  padding:1.8rem 0;border-top:2px solid var(--ink);
   font-family:var(--mono);font-size:.7rem;color:var(--mid);
 }
 .fi{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;align-items:center}
 .fl{display:flex;gap:1.5rem}
-.fl a{color:var(--mid);border-bottom:1px solid var(--faint)}
+.fl a{color:var(--mid);text-decoration:none;border-bottom:1px solid var(--line)}
+.fl a:hover{color:var(--teal);border-color:var(--teal)}
 
-/* ─── SCROLL REVEAL ────────────────────────────────────── */
+/* ─── SCROLL REVEAL ──────────────────────── */
 .r{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s ease}
 .r.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.r{opacity:1;transform:none;transition:none}}
 
-/* ─── RESPONSIVE ───────────────────────────────────────── */
+/* ─── CHAT WIDGET ────────────────────────── */
+.chat-btn{
+  position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;
+  width:50px;height:50px;border-radius:50%;
+  background:var(--teal);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 18px rgba(10,122,108,0.35);
+  transition:transform .2s,box-shadow .2s;
+}
+.chat-btn:hover{transform:scale(1.08);box-shadow:0 6px 26px rgba(10,122,108,0.5)}
+.chat-btn svg{width:20px;height:20px;fill:#fff}
+.chat-btn .ci{display:block}
+.chat-btn .xi{display:none}
+.chat-btn.open .ci{display:none}
+.chat-btn.open .xi{display:block}
+.chat-panel{
+  position:fixed;bottom:5.2rem;right:1.8rem;z-index:998;
+  width:340px;max-height:480px;
+  background:var(--bg);border:1px solid var(--line);
+  border-radius:8px;box-shadow:0 8px 40px rgba(10,30,56,0.14);
+  display:flex;flex-direction:column;
+  opacity:0;transform:translateY(12px) scale(0.97);
+  pointer-events:none;
+  transition:opacity .25s ease,transform .25s ease;
+}
+.chat-panel.open{opacity:1;transform:none;pointer-events:all}
+.chat-hd{
+  padding:.85rem 1rem;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:.7rem;flex-shrink:0;
+}
+.chat-av{
+  width:30px;height:30px;border-radius:50%;
+  background:var(--teal);display:flex;
+  align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.68rem;
+  font-weight:600;color:#fff;flex-shrink:0;
+}
+.ch-name{font-family:var(--mono);font-size:.73rem;font-weight:500;color:var(--ink)}
+.ch-status{
+  font-family:var(--mono);font-size:.6rem;color:var(--mid);
+  display:flex;align-items:center;gap:.3rem;
+}
+.sdot{width:6px;height:6px;border-radius:50%;background:var(--teal);display:inline-block}
+.chat-msgs{
+  flex:1;overflow-y:auto;padding:.8rem;
+  display:flex;flex-direction:column;gap:.55rem;
+}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
+.msg{
+  max-width:86%;padding:.5rem .7rem;border-radius:6px;
+  font-family:var(--body);font-size:.8rem;line-height:1.55;
+}
+.mb{background:var(--bg2);color:var(--ink);align-self:flex-start;border-bottom-left-radius:2px}
+.mu{background:var(--teal);color:#fff;align-self:flex-end;border-bottom-right-radius:2px;font-weight:500}
+.chat-sugg{
+  padding:.5rem .8rem;display:flex;flex-wrap:wrap;
+  gap:.3rem;border-top:1px solid var(--line);flex-shrink:0;
+}
+.sugg{
+  font-family:var(--mono);font-size:.62rem;
+  padding:.25rem .55rem;border:1px solid var(--line);
+  border-radius:20px;background:transparent;
+  color:var(--mid);cursor:pointer;transition:border-color .15s,color .15s;
+}
+.sugg:hover{border-color:var(--teal);color:var(--teal)}
+.chat-ir{
+  padding:.6rem .8rem;border-top:1px solid var(--line);
+  display:flex;gap:.5rem;flex-shrink:0;
+}
+.chat-in{
+  flex:1;font-family:var(--body);font-size:.8rem;
+  border:1px solid var(--line);border-radius:2px;
+  padding:.38rem .6rem;outline:none;
+  color:var(--ink);background:var(--bg);transition:border-color .15s;
+}
+.chat-in:focus{border-color:var(--teal)}
+.chat-send{
+  font-family:var(--mono);font-size:.7rem;
+  padding:.38rem .65rem;background:var(--teal);
+  color:#fff;border:none;border-radius:2px;
+  cursor:pointer;font-weight:600;transition:background .15s;
+}
+.chat-send:hover{background:#085F54}
+
+/* ─── RESPONSIVE ─────────────────────────── */
 @media(max-width:780px){
-  .hero-body,.about-cols,.contact-g,.finding-wrap{grid-template-columns:1fr;gap:2rem}
-  .photo{order:-1}.photo img,.photo-fb{width:100px;height:100px}
-  .kpis{grid-template-columns:1fr 1fr}
-  .kpi:nth-child(2){border-right:none}
-  .kpi:nth-child(3){border-top:1px solid var(--faint)}
+  .hero-main,.about-cols,.contact-grid,.finding-layout{grid-template-columns:1fr;gap:2rem}
+  .hero-photo{order:-1}.hero-photo img,.hero-photo-fb{width:100px;height:100px}
+  .kpi-row{grid-template-columns:1fr 1fr}
+  .kpi-card:nth-child(2){border-right:none}
+  .kpi-card:nth-child(3){border-top:1px solid var(--line)}
+  .work-cards{grid-template-columns:1fr}
   .exp-row{grid-template-columns:1fr;gap:.25rem}
-  .demo-g{grid-template-columns:1fr}
-  .map-bar{flex-direction:column;text-align:center}
+  .demo-inner{grid-template-columns:1fr}
+  .map-cta{flex-direction:column;text-align:center}
+  .chat-panel{width:calc(100vw - 2rem);right:1rem}
 }
 </style>
 </head>
@@ -472,8 +682,8 @@ footer{
 <!-- NAV -->
 <nav>
 <div class="w nav-i">
-  <span class="logo">ROHITH DONTHI</span>
-  <ul class="links">
+  <span class="logo">ROHITH <em>DONTHI</em></span>
+  <ul class="nav-links">
     <li><a href="#finding">Research</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#about">About</a></li>
@@ -484,210 +694,227 @@ footer{
 </nav>
 
 <!-- HERO -->
-<div class="hero">
+<section class="hero">
 <div class="w">
-  <div class="hero-body">
+  <div class="hero-main">
     <div class="r">
-      <p class="hero-tag">Maharshi Rohith Donthi · MS Data Science · Rutgers University</p>
+      <p class="hero-eyebrow">Maharshi Rohith Donthi · MS Data Science · Rutgers University</p>
       <h1 class="hero-h">
         I built a model.<br>
         Then I built a baseline.<br>
-        <span class="accent">The baseline won.</span>
+        <span class="t">The baseline</span> <span class="a">won.</span>
       </h1>
-      <p class="hero-sub">
+      <p class="hero-p">
         Data Scientist specializing in <strong>credit risk modeling</strong>
-        and <strong>energy market analytics</strong>. I build rigorous
-        pipelines - and I benchmark them honestly against the simplest
-        possible alternative. That discipline is the work.
+        and <strong>energy market analytics</strong>. I build production-grade
+        pipelines that drive measurable business outcomes, from better underwriting
+        decisions to sharper generation forecasts, benchmarked honestly against
+        the simplest possible alternative.
       </p>
       <div class="btns">
-        <a href="#work" class="btn btn-g">See the work ↓</a>
+        <a href="#work" class="btn btn-p">See the work ↓</a>
         <a href="https://www.linkedin.com/in/rohith-donthi" target="_blank" class="btn btn-o">LinkedIn</a>
         <a href="https://github.com/rohithdonthi" target="_blank" class="btn btn-o">GitHub</a>
-        <a href="MaharshiRohithDonthi_Resume.pdf" download class="btn btn-o">Resume ↓</a>
+        <a href="MaharshiRohithDonthi_Resume.pdf" download class="btn btn-a">Resume ↓</a>
       </div>
     </div>
-    <div class="photo r">
+    <div class="hero-photo r">
       <img src="photo.jpg" alt="Rohith Donthi"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <div class="photo-fb">photo.jpg</div>
+      <div class="hero-photo-fb">photo.jpg</div>
     </div>
   </div>
 
-  <!-- KPIs -->
-  <div class="kpis r">
-    <div class="kpi">
-      <div class="kpi-n" style="color:var(--g)">0.87</div>
-      <div class="kpi-l">AUC ROC<br>Credit model</div>
+  <!-- KPI ROW -->
+  <div class="kpi-row r">
+    <div class="kpi-card" style="--kc:var(--teal)">
+      <div class="kpi-n">0.87</div>
+      <div class="kpi-l">AUC ROC · Credit model</div>
+      <div class="kpi-s">KS 0.42 · Holdout validated</div>
     </div>
-    <div class="kpi">
-      <div class="kpi-n" style="color:var(--a)">50</div>
-      <div class="kpi-l">States modeled<br>Energy thesis</div>
+    <div class="kpi-card" style="--kc:var(--amber)">
+      <div class="kpi-n">50</div>
+      <div class="kpi-l">States modeled · EIA thesis</div>
+      <div class="kpi-s">1990-2023 · All fuel types</div>
     </div>
-    <div class="kpi">
-      <div class="kpi-n" style="color:var(--g)">$180K</div>
-      <div class="kpi-l">Annualized savings<br>Synergy internship</div>
+    <div class="kpi-card" style="--kc:var(--green)">
+      <div class="kpi-n">$180K</div>
+      <div class="kpi-l">Annualized savings</div>
+      <div class="kpi-s">50K+ account portfolio</div>
     </div>
-    <div class="kpi">
-      <div class="kpi-n" style="color:var(--a)">22%</div>
-      <div class="kpi-l">RMSE reduction<br>LGD loss model</div>
+    <div class="kpi-card" style="--kc:var(--blue)">
+      <div class="kpi-n">22%</div>
+      <div class="kpi-l">RMSE reduction · LGD model</div>
+      <div class="kpi-s">Gradient boosting · Out-of-time</div>
     </div>
   </div>
 </div>
-</div>
-</div>
+</section>
 
-<!-- THE FINDING -->
+<!-- FINDING -->
 <section id="finding" class="sec">
 <div class="w">
-  <p class="sec-mark">Key Finding · MS Capstone Thesis · Rutgers University 2025</p>
-  <h2 class="sec-h">A persistence baseline outperformed the VAR model.<br>Here is why that is the correct result.</h2>
-
-  <div class="finding-wrap r">
+  <p class="sec-num r">01 / Research finding</p>
+  <h2 class="sec-h r">A persistence baseline outperformed the VAR model.<br>Here is why that is the correct result.</h2>
+  <div class="finding-layout r">
     <div>
-      <p class="finding-lede">
-        For my MS capstone I built a compositional forecasting pipeline for U.S.
-        state-level electricity generation mix of 50 states, 3 fuel categories,
-        1990-2023. I applied centered log-ratio (CLR) transformation to handle
-        the compositional constraint, then fit per-state VAR models with AIC-based
-        lag selection.
+      <p class="f-body">
+        My MS capstone at Rutgers built a compositional forecasting pipeline for
+        U.S. state-level electricity generation mix across 50 states (EIA data, 1990-2023).
+        I applied CLR transformation to handle the compositional constraint, then fit
+        per-state VAR models with AIC-based lag selection and rolling-window validation.
       </p>
-      <p class="finding-lede">
-        Then I ran the simplest possible baseline: <strong>next year's mix
-        equals this year's mix.</strong> The baseline won across every fuel
-        category.
+      <p class="f-body">
+        Then I ran the simplest possible baseline: <strong>next year's mix equals
+        this year's mix.</strong> The baseline won across every fuel category.
       </p>
-      <div class="finding-note" style="margin-top:1.5rem">
-        <strong>Why this is the right finding, not a failure:</strong>
-        Annual electricity generation shares change slowly. With nearly 30 observations
-        per state, a multivariate VAR overfits. The practical implication is clear:
-        to beat persistence you need exogenous covariates, be it fuel price shocks,
-        Renewable Portfolio Standards, carbon regulations, not a more complex
-        autoregressive model. That is what I would build next.
+      <div class="f-note">
+        <strong>Why this is correct, not a failure:</strong>
+        Annual generation shares change slowly. With roughly 30 observations per state,
+        the VAR overfits. To beat persistence, you need exogenous covariates such as
+        fuel price shocks, Renewable Portfolio Standards, and carbon regulations.
+        That is what I would build next.
       </div>
     </div>
     <div>
-      <table class="mae">
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th>VAR MAE</th>
-            <th>Baseline MAE</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="cat">Natural Gas</td>
-            <td class="var">19.3 pp</td>
-            <td class="base">3.2 pp</td>
-            <td><span class="win">↓ 83%</span></td>
-          </tr>
-          <tr>
-            <td class="cat">Other Fossil</td>
-            <td class="var">21.9 pp</td>
-            <td class="base">4.9 pp</td>
-            <td><span class="win">↓ 78%</span></td>
-          </tr>
-          <tr>
-            <td class="cat">Nuclear &amp; Renewable</td>
-            <td class="var">42.0 pp</td>
-            <td class="base">9.8 pp</td>
-            <td><span class="win">↓ 77%</span></td>
-          </tr>
-        </tbody>
-      </table>
-      <p style="font-family:var(--mono);font-size:.62rem;color:var(--mid);margin-top:.6rem">
-        One-step-ahead MAE in percentage points of generation share, 2023 forecast. Lower is better.
-      </p>
+      <div class="data-card">
+        <div class="data-card-hd">
+          <span>Model Performance · 2023 Forecast</span>
+          <span class="badge">MAE in percentage points</span>
+        </div>
+        <table class="data-tbl">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>VAR Model</th>
+              <th>Baseline</th>
+              <th>Delta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Natural Gas</td>
+              <td class="v">19.3 pp</td>
+              <td class="b">3.2 pp</td>
+              <td><span class="win">83% lower</span></td>
+            </tr>
+            <tr>
+              <td>Other Fossil</td>
+              <td class="v">21.9 pp</td>
+              <td class="b">4.9 pp</td>
+              <td><span class="win">78% lower</span></td>
+            </tr>
+            <tr>
+              <td>Nuclear &amp; Renewable</td>
+              <td class="v">42.0 pp</td>
+              <td class="b">9.8 pp</td>
+              <td><span class="win">77% lower</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="data-card-ft">Lower MAE is better · Baseline wins in all categories</div>
+      </div>
     </div>
   </div>
 </div>
 </section>
 
 <!-- WORK -->
-<section id="work" class="sec">
+<section id="work" class="sec" style="background:var(--bg2)">
 <div class="w">
-  <p class="sec-mark">Work</p>
-  <h2 class="sec-h">Two pipelines built end to end.</h2>
+  <p class="sec-num r">02 / Case studies</p>
+  <h2 class="sec-h r">Two pipelines built end to end.</h2>
 
-  <!-- CREDIT -->
-  <div class="project r">
-    <div class="p-stripe" style="background:var(--g)"></div>
-    <div class="p-body">
-      <div class="p-tag" style="color:var(--g)">Credit Risk · Production-style Pipeline</div>
-      <div class="p-title">Underwriting Decisioning System</div>
-      <p class="p-desc">
-        Calibrated probability-of-default model → PDO/ODDS scorecard mapping →
-        APPROVE / REVIEW / DECLINE decision with reason codes → PSI drift monitoring.
-        Built on 1,200 synthetic Metro 2®-style bureau records. Retrained on real
-        bureau features: FICO, revolving utilization, delinquency count, hard inquiries,
-        bankruptcy flag, months since oldest account.
-      </p>
-      <div class="band-labels"><span>Lower score</span><span>Higher score</span></div>
-      <div class="band">
-        <div class="band-seg" style="flex:33;background:var(--r)">DECLINE</div>
-        <div class="band-seg" style="flex:27;background:var(--a)">REVIEW</div>
-        <div class="band-seg" style="flex:40;background:var(--g)">APPROVE</div>
+  <div class="work-cards r">
+    <!-- CREDIT -->
+    <div class="work-card">
+      <div class="wc-head">
+        <div class="wc-accent" style="background:var(--teal)"></div>
+        <div>
+          <div class="wc-domain" style="color:var(--teal)">Credit Risk · Production Pipeline</div>
+          <div class="wc-title">Underwriting Decisioning System</div>
+        </div>
+        <div class="wc-kpi">
+          <div class="wc-kn" style="color:var(--teal)">0.87</div>
+          <div class="wc-kl">AUC ROC</div>
+        </div>
       </div>
-      <div class="band-note">Decision bands output alongside every score, illustrative proportions.</div>
-      <div class="tags">
-        <span>AUC 0.87 · KS 0.42</span>·
-        <span>Time-based validation</span>·
-        <span>Sigmoid calibration</span>·
-        <span>PDO scorecard</span>·
-        <span>Reason codes</span>·
-        <span>PSI drift monitoring</span>·
-        <span>scikit-learn · XGBoost · Streamlit</span>
+      <div class="wc-body">
+        <p class="wc-desc">
+          Calibrated PD model mapped to a PDO/ODDS scorecard, producing
+          APPROVE / REVIEW / DECLINE decisions with reason codes, plus
+          PSI drift monitoring with automated retraining. Built on 1,200
+          synthetic Metro 2 bureau records with real bureau features.
+        </p>
+        <div class="band-lb"><span>Lower score</span><span>Higher score</span></div>
+        <div class="band">
+          <div class="band-s" style="flex:33;background:var(--rust)">DECLINE</div>
+          <div class="band-s" style="flex:27;background:var(--amber)">REVIEW</div>
+          <div class="band-s" style="flex:40;background:var(--teal)">APPROVE</div>
+        </div>
+        <div class="band-n">Decision bands alongside every score. Illustrative proportions.</div>
+        <div class="tags">
+          <span>AUC 0.87 · KS 0.42</span>·<span>Time-based validation</span>·
+          <span>Sigmoid calibration</span>·<span>PDO scorecard</span>·
+          <span>Reason codes</span>·<span>PSI drift monitoring</span>
+        </div>
+        <div class="wc-links">
+          <a href="https://github.com/rohithdonthi/credit-underwriting-decisioning-system"
+             target="_blank" style="color:var(--teal)">GitHub →</a>
+          <a href="https://credit-underwriting-decisioning-system-cdtsdqhdh5awgnmmtoyvnm.streamlit.app"
+             target="_blank" style="color:var(--teal)">Live demo →</a>
+        </div>
       </div>
-      <div class="p-links">
-        <a href="https://github.com/rohithdonthi/credit-underwriting-decisioning-system"
-           target="_blank" style="color:var(--g)">GitHub →</a>
-        <a href="https://credit-underwriting-decisioning-system-cdtsdqhdh5awgnmmtoyvnm.streamlit.app"
-           target="_blank" style="color:var(--g)">Live demo →</a>
+    </div>
+
+    <!-- ENERGY -->
+    <div class="work-card">
+      <div class="wc-head">
+        <div class="wc-accent" style="background:var(--amber)"></div>
+        <div>
+          <div class="wc-domain" style="color:var(--amber)">Energy Markets · MS Capstone Thesis</div>
+          <div class="wc-title">Energy Market Forecasting &amp; Policy Analysis</div>
+        </div>
+        <div class="wc-kpi">
+          <div class="wc-kn" style="color:var(--amber)">50</div>
+          <div class="wc-kl">States</div>
+        </div>
+      </div>
+      <div class="wc-body">
+        <p class="wc-desc">
+          Compositional time-series forecasting of U.S. electricity generation
+          mix across all 50 states (EIA 1990-2023). CLR transformation,
+          per-state VAR with AIC/BIC/HQIC lag selection, rolling-window
+          validation, and honest benchmark against persistence baseline.
+          See Research section above for full findings.
+        </p>
+        <div class="tags">
+          <span>CLR transformation</span>·<span>Per-state VAR</span>·
+          <span>ADF stationarity testing</span>·<span>AIC / BIC / HQIC</span>·
+          <span>Rolling-window validation</span>·<span>EIA 1990-2023</span>·
+          <span>Python · statsmodels · pandas</span>
+        </div>
+        <div class="wc-links">
+          <a href="https://github.com/rohithdonthi/Energy-Market-Forecasting-and-Policy-Impact-Analysis"
+             target="_blank" style="color:var(--amber)">GitHub →</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ENERGY -->
-  <div class="project r">
-    <div class="p-stripe" style="background:var(--a)"></div>
-    <div class="p-body">
-      <div class="p-tag" style="color:var(--a)">Energy Markets · MS Capstone Thesis</div>
-      <div class="p-title">Energy Market Forecasting &amp; Policy Analysis</div>
-      <p class="p-desc">
-        Compositional time-series forecasting of U.S. electricity generation mix
-        across all 50 states (EIA data, 1990-2023). CLR transformation → per-state
-        VAR with AIC/BIC/HQIC lag selection → rolling-window validation →
-        honest benchmark against persistence baseline. See the Key Finding section above.
-      </p>
-      <div class="tags">
-        <span>CLR transformation</span>·
-        <span>Per-state VAR</span>·
-        <span>ADF stationarity testing</span>·
-        <span>AIC / BIC / HQIC</span>·
-        <span>Rolling-window validation</span>·
-        <span>EIA 1990–2023</span>·
-        <span>Python · statsmodels · pandas</span>
-      </div>
-      <div class="p-links">
-        <a href="https://github.com/rohithdonthi/Energy-Market-Forecasting-and-Policy-Impact-Analysis"
-           target="_blank" style="color:var(--a)">GitHub →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MAP -->
-  <div class="map-bar r">
+  <!-- MAP CTA -->
+  <div class="map-cta r">
     <div>
-      <div class="map-bar-h">Interactive: explore 33 years of U.S. energy data</div>
-      <div class="map-bar-s">Click any state · Year slider 1990-2023 · 50 states · EIA generation mix</div>
+      <div class="map-cta-h">Interactive: 33 years of U.S. energy generation data</div>
+      <div class="map-cta-s">Click any state · Year slider 1990-2023 · 50 states · EIA generation mix</div>
     </div>
-    <a href="energy_map.html" target="_blank" class="map-btn">Open map →</a>
+    <a href="energy_map.html" target="_blank" class="map-btn">Explore the data →</a>
   </div>
 
-  <p style="font-family:var(--mono);font-size:.75rem;color:var(--mid)">
-    <a href="https://github.com/rohithdonthi" target="_blank">All projects on GitHub →</a>
+  <p style="font-family:var(--mono);font-size:.73rem;color:var(--mid);margin-top:.8rem">
+    <a href="https://github.com/rohithdonthi" target="_blank"
+       style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal)">
+      All projects on GitHub →</a>
   </p>
 </div>
 </section>
@@ -695,29 +922,27 @@ footer{
 <!-- ABOUT -->
 <section id="about" class="sec">
 <div class="w">
-  <p class="sec-mark">About</p>
-  <h2 class="sec-h">Who I am and what I care about.</h2>
+  <p class="sec-num r">03 / About</p>
+  <h2 class="sec-h r">Who I am and what I care about.</h2>
   <div class="about-cols">
     <div class="r">
-      <p class="a-body">
+      <p class="ab">
         I'm an MS Data Science graduate from Rutgers (Statistics Track, December 2025)
         based in Jersey City, NJ. My work sits at the intersection of
-        <strong>quantitative modeling</strong> and <strong>domain expertise</strong>:
+        <strong>quantitative modeling</strong> and <strong>domain expertise</strong>,
         specifically energy markets and credit risk, two fields where model evaluation
         matters as much as model building.
       </p>
-      <p class="a-body">
-        The thesis result I'm most proud of isn't the CLR methodology or the per-state
-        VAR. It's the table that shows a persistence baseline beating the model in every
-        category - and the clear explanation of why that's the correct finding, not a
-        failure. <strong>Knowing when and why your model is wrong is the job.</strong>
+      <p class="ab">
+        The thesis result I'm most proud of isn't the CLR methodology or the per-state VAR.
+        It's the table that shows a persistence baseline beating the model in every category,
+        with a clear explanation of why that's the correct finding, not a failure.
+        <strong>Knowing when and why your model is wrong is the job.</strong>
       </p>
-      <p class="a-body">
-        Energy analytics sits at the intersection of physical systems, policy, and data -
-        which is why it's harder and more interesting than most DS problems. Generation
-        mixes shift slowly but meaningfully in response to fuel prices, regulation, and
-        infrastructure decisions. Getting that forecast right requires both statistical
-        rigor and genuine domain context.
+      <p class="ab">
+        Energy analytics sits at the intersection of physical systems, policy, and data,
+        which is why it's harder and more interesting than most DS problems. Getting generation
+        forecasts right requires both statistical rigor and genuine domain context.
       </p>
     </div>
     <div class="facts r">
@@ -729,7 +954,6 @@ footer{
         <div class="fk">Education</div>
         <div class="fv">MS Data Science (Statistics Track)<br>Rutgers University · Dec 2025</div>
       </div>
-
       <div class="fact">
         <div class="fk">Currently</div>
         <div class="fv"><span class="dot"></span>Open to full-time roles</div>
@@ -744,35 +968,35 @@ footer{
 </section>
 
 <!-- BACKGROUND -->
-<section id="background" class="sec">
+<section id="background" class="sec" style="background:var(--bg2)">
 <div class="w">
-  <p class="sec-mark">Background</p>
-  <h2 class="sec-h">Where the experience comes from.</h2>
-  <div class="exp r">
+  <p class="sec-num r">04 / Background</p>
+  <h2 class="sec-h r">Where the experience comes from.</h2>
+  <div class="r">
     <div class="exp-row">
-      <div class="e-when">Oct – Dec 2025</div>
+      <div class="e-w">Oct - Dec 2025</div>
       <div>
-        <div class="e-role">Data Science Intern · Synergy Resources LLC</div>
-        <div class="e-desc">End-to-end credit underwriting pipeline across 50,000+ accounts. Logistic regression default model (AUC 0.87, KS 0.42) and gradient boosting loss model (22% RMSE reduction). PSI drift detection, automated retraining triggers, governance documentation, dashboards for 20+ loan officers. $180K annualized savings.</div>
+        <div class="e-r">Data Science Intern · Synergy Resources LLC</div>
+        <div class="e-d">End-to-end credit underwriting pipeline across 50,000+ accounts. Logistic regression default model (AUC 0.87) and gradient boosting loss model (22% RMSE reduction). PSI drift detection, governance documentation, dashboards for 20+ loan officers. $180K annualized savings.</div>
       </div>
     </div>
     <div class="exp-row">
-      <div class="e-when">Jan 2024 – Dec 2025</div>
+      <div class="e-w">Jan 2024 - Dec 2025</div>
       <div>
-        <div class="e-role">Statistics Grader &amp; Mentor · Rutgers University</div>
-        <div class="e-desc">Evaluated 200+ assignments across Regression Methods, Business Statistics, and Python Programming. Built Python automation reducing evaluation time by 30%. Mentored 15+ students on statistical reasoning and coding fundamentals.</div>
+        <div class="e-r">Statistics Grader &amp; Mentor · Rutgers University</div>
+        <div class="e-d">Evaluated 200+ assignments across Regression Methods, Business Statistics, and Python Programming. Python automation reducing evaluation time by 30%. Mentored 15+ students on statistical reasoning.</div>
       </div>
     </div>
     <div class="exp-row">
-      <div class="e-when">May – Jul 2022</div>
+      <div class="e-w">May - Jul 2022</div>
       <div>
-        <div class="e-role">Data Analyst Intern · Jaaji Technologies</div>
-        <div class="e-desc">Random Forest + XGBoost models predicting Flash Point (97% accuracy). Automated Power BI dashboards for quality tracking. 15% efficiency improvement, $60K in savings.</div>
+        <div class="e-r">Data Analyst Intern · Jaaji Technologies</div>
+        <div class="e-d">Random Forest and XGBoost models predicting Flash Point (97% accuracy). Automated Power BI dashboards for quality tracking. 15% efficiency improvement, $60K in savings.</div>
       </div>
     </div>
-  </div>
-  <div class="certs r">
-    <strong>Certifications:</strong> Bloomberg Market Concepts (BMC) · Financial Statistics &amp; Risk Management (FSRM)
+    <div class="certs">
+      <strong>Certifications:</strong> Bloomberg Market Concepts (BMC) · Financial Statistics &amp; Risk Management (FSRM)
+    </div>
   </div>
 </div>
 </section>
@@ -780,57 +1004,31 @@ footer{
 <!-- SKILLS -->
 <section id="skills" class="sec">
 <div class="w">
-  <p class="sec-mark">Skills</p>
-  <h2 class="sec-h">The toolbox.</h2>
-  <div class="skills-g r">
+  <p class="sec-num r">05 / Skills</p>
+  <h2 class="sec-h r">The toolbox.</h2>
+  <div class="skills-outer r">
     <div class="sg"><h4>Programming</h4>
-      <div class="chips">
-        <span class="chip">Python</span><span class="chip">SQL</span>
-        <span class="chip">R</span><span class="chip">Java</span>
-      </div>
+      <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">R</span><span class="chip">Java</span></div>
     </div>
     <div class="sg"><h4>ML &amp; Modeling</h4>
-      <div class="chips">
-        <span class="chip">scikit-learn</span><span class="chip">XGBoost</span>
-        <span class="chip">LightGBM</span><span class="chip">TensorFlow</span>
-        <span class="chip">statsmodels</span><span class="chip">pandas</span>
-        <span class="chip">NumPy</span>
-      </div>
+      <div class="chips"><span class="chip">scikit-learn</span><span class="chip">XGBoost</span><span class="chip">LightGBM</span><span class="chip">TensorFlow</span><span class="chip">statsmodels</span><span class="chip">pandas</span><span class="chip">NumPy</span></div>
     </div>
     <div class="sg"><h4>Analytics &amp; BI</h4>
-      <div class="chips">
-        <span class="chip">Power BI</span><span class="chip">Tableau</span>
-        <span class="chip">Excel</span><span class="chip">Matplotlib</span>
-        <span class="chip">Seaborn</span>
-      </div>
+      <div class="chips"><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Excel</span><span class="chip">Matplotlib</span><span class="chip">Seaborn</span></div>
     </div>
     <div class="sg"><h4>Platforms</h4>
-      <div class="chips">
-        <span class="chip">AWS S3/EC2/Lambda</span><span class="chip">Docker</span>
-        <span class="chip">Git</span><span class="chip">Streamlit</span>
-        <span class="chip">Linux</span>
-      </div>
+      <div class="chips"><span class="chip">AWS S3/EC2/Lambda</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">Streamlit</span><span class="chip">Linux</span></div>
     </div>
     <div class="sg"><h4>Statistical Methods</h4>
-      <div class="chips">
-        <span class="chip">Regression</span><span class="chip">Time Series</span>
-        <span class="chip">Compositional Data</span>
-        <span class="chip">A/B Testing</span><span class="chip">Hypothesis Testing</span>
-      </div>
+      <div class="chips"><span class="chip">Regression</span><span class="chip">Time Series</span><span class="chip">Compositional Data</span><span class="chip">A/B Testing</span><span class="chip">Hypothesis Testing</span></div>
     </div>
     <div class="sg"><h4>Domain</h4>
-      <div class="chips">
-        <span class="chip">Credit Risk (PD/LGD)</span>
-        <span class="chip">Scorecard Dev</span>
-        <span class="chip">Energy Markets</span>
-        <span class="chip">Model Monitoring</span>
-        <span class="chip">PSI / Drift Detection</span>
-      </div>
+      <div class="chips"><span class="chip">Credit Risk (PD/LGD)</span><span class="chip">Scorecard Dev</span><span class="chip">Energy Markets</span><span class="chip">Model Monitoring</span><span class="chip">PSI / Drift Detection</span></div>
     </div>
   </div>
   <div class="r">
     <div class="code-cap">Code sample: PDO scorecard mapping</div>
-    <pre class="code"><span class="cm"># Calibrated P(good) → interpretable scorecard score</span>
+    <pre class="code"><span class="cm"># Calibrated P(good) to interpretable scorecard score</span>
 <span class="cm"># PDO=20 pts to double odds | SCORE0=600 at ODDS0=50</span>
 <span class="kw">import</span> numpy <span class="kw">as</span> np
 
@@ -840,70 +1038,67 @@ footer{
     offset = score0 - factor * np.log(odds0)
     <span class="kw">return</span> np.round(offset + factor * np.log(np.maximum(odds, <span class="nm">0.001</span>))).astype(int)
 
-<span class="cm"># P(good)=0.09 → score 421 → DECLINE</span>
-<span class="cm"># P(good)=0.86 → score 650 → APPROVE</span></pre>
+<span class="cm"># P(good)=0.09  score 421  DECLINE</span>
+<span class="cm"># P(good)=0.86  score 650  APPROVE</span></pre>
   </div>
 </div>
 </section>
 
 <!-- DEMO -->
-<section id="demo" class="sec">
+<section id="demo" class="sec" style="background:var(--bg2)">
 <div class="w">
-  <p class="sec-mark">Interactive Demo · Credit Scoring</p>
-  <h2 class="sec-h">Try the scorecard model.</h2>
-  <p style="color:var(--mid);font-size:.96rem;line-height:1.75;max-width:560px;margin-bottom:2rem">
-    The same PDO/ODDS logic from the Synergy pipeline, which is in the browser.
+  <p class="sec-num r">06 / Interactive demo</p>
+  <h2 class="sec-h r">Try the scorecard model.</h2>
+  <p style="color:var(--mid);font-size:.94rem;line-height:1.75;max-width:520px;margin-bottom:1.5rem" class="r">
+    The same PDO/ODDS logic from the Synergy pipeline, running directly in the browser.
     Adjust inputs and watch the score and decision update in real time.
   </p>
-  <div class="demo-g r">
-    <div class="demo-in">
-      <div class="df">
-        <div class="df-top">
-          <label class="dlabel">FICO Score</label>
-          <span class="dval" id="fv">680</span>
+  <div class="demo-outer r">
+    <div class="demo-bar">
+      <span class="demo-bar-dot"></span>
+      <span>Credit Underwriting Scorecard · Live Model</span>
+    </div>
+    <div class="demo-inner">
+      <div class="demo-in">
+        <div class="df">
+          <div class="df-top"><label class="dlabel">FICO Score</label><span class="dval" id="fv">680</span></div>
+          <input type="range" class="sl" id="fi" min="300" max="850" value="680" step="5">
+          <div class="rl"><span>300</span><span>850</span></div>
         </div>
-        <input type="range" class="sl" id="fi" min="300" max="850" value="680" step="5">
-        <div class="rl"><span>300</span><span>850</span></div>
+        <div class="df">
+          <div class="df-top"><label class="dlabel">Revolving Utilization</label><span class="dval" id="uv">35%</span></div>
+          <input type="range" class="sl" id="ui" min="0" max="100" value="35" step="1">
+          <div class="rl"><span>0%</span><span>100%</span></div>
+        </div>
+        <div class="df">
+          <div class="df-top"><label class="dlabel">Delinquencies (24 mo)</label><span class="dval" id="dv">0</span></div>
+          <input type="range" class="sl" id="di" min="0" max="20" value="0" step="1">
+          <div class="rl"><span>0</span><span>20</span></div>
+        </div>
       </div>
-      <div class="df">
-        <div class="df-top">
-          <label class="dlabel">Revolving Utilization</label>
-          <span class="dval" id="uv">35%</span>
+      <div class="demo-out">
+        <div class="score-blk">
+          <div class="score-cap">Scorecard Score</div>
+          <div class="score-n" id="sn">647</div>
+          <div class="score-sub">PDO=20 · Base 600 · Odds 50</div>
         </div>
-        <input type="range" class="sl" id="ui" min="0" max="100" value="35" step="1">
-        <div class="rl"><span>0%</span><span>100%</span></div>
-      </div>
-      <div class="df">
-        <div class="df-top">
-          <label class="dlabel">Delinquencies (24 mo)</label>
-          <span class="dval" id="dv">0</span>
+        <div class="dec-blk">
+          <div class="dec" id="db">APPROVE</div>
+          <div class="pd-line">P(default): <span id="pd">8.1%</span></div>
         </div>
-        <input type="range" class="sl" id="di" min="0" max="20" value="0" step="1">
-        <div class="rl"><span>0</span><span>20</span></div>
+        <div>
+          <div class="rc-cap">Reason codes</div>
+          <div class="rc-list" id="rl"></div>
+        </div>
       </div>
     </div>
-    <div class="demo-out">
-      <div class="score-blk">
-        <div class="score-cap">Scorecard Score</div>
-        <div class="score-n" id="sn">647</div>
-        <div class="score-sub">PDO=20 · Base 600 · Odds 50</div>
-      </div>
-      <div class="dec-blk">
-        <div class="dec" id="db">APPROVE</div>
-        <div class="pd-line">P(default): <span id="pd">8.1%</span></div>
-      </div>
-      <div>
-        <div class="rc-cap">Reason codes</div>
-        <div class="rc-list" id="rl"></div>
-      </div>
+    <div class="demo-note">
+      <strong>How it works:</strong> Inputs feed a logistic function producing P(default).
+      PDO/ODDS scaling maps P(good) to an interpretable scorecard.
+      Thresholds: &lt;500 DECLINE · 500-620 REVIEW · &gt;620 APPROVE.
+      <a href="https://credit-underwriting-decisioning-system-cdtsdqhdh5awgnmmtoyvnm.streamlit.app"
+         target="_blank">Full pipeline on Streamlit →</a>
     </div>
-  </div>
-  <div class="demo-note r">
-    <strong>How it works:</strong> Inputs feed a logistic function producing P(default).
-    PDO/ODDS scaling maps P(good) to an interpretable scorecard.
-    Thresholds: &lt;500 → DECLINE · 500-620 → REVIEW · &gt;620 → APPROVE.
-    <a href="https://credit-underwriting-decisioning-system-cdtsdqhdh5awgnmmtoyvnm.streamlit.app"
-       target="_blank">Full pipeline on Streamlit →</a>
   </div>
 </div>
 </section>
@@ -911,22 +1106,21 @@ footer{
 <!-- CONTACT -->
 <section id="contact" class="sec">
 <div class="w">
-  <p class="sec-mark">Contact</p>
-  <div class="contact-g">
+  <p class="sec-num r">07 / Contact</p>
+  <div class="contact-grid">
     <div class="r">
       <h2 class="c-h">Open to Data Scientist,<br>Analyst, and ML Engineer roles.</h2>
       <p class="c-body">
-        Particularly interested in energy analytics and credit risk:
-        anywhere that honest model evaluation is valued as much
-        as the model itself.
+        Particularly interested in energy analytics and credit risk,
+        anywhere that honest model evaluation is valued as much as the model itself.
       </p>
       <div class="btns">
-        <a href="https://www.linkedin.com/in/rohith-donthi" target="_blank" class="btn btn-g">Connect on LinkedIn</a>
+        <a href="https://www.linkedin.com/in/rohith-donthi" target="_blank" class="btn btn-p">Connect on LinkedIn</a>
         <a href="https://github.com/rohithdonthi" target="_blank" class="btn btn-o">GitHub</a>
-        <a href="MaharshiRohithDonthi_Resume.pdf" download class="btn btn-o">Download Resume ↓</a>
+        <a href="MaharshiRohithDonthi_Resume.pdf" download class="btn btn-a">Download Resume ↓</a>
       </div>
     </div>
-    <div class="c-details r">
+    <div class="c-det r">
       <div class="cd">
         <span class="ck">Email</span>
         <span class="cv"><a href="mailto:rohith.donthi14@gmail.com">rohith.donthi14@gmail.com</a></span>
@@ -939,7 +1133,10 @@ footer{
         <span class="ck">Location</span>
         <span class="cv">Jersey City, NJ</span>
       </div>
-
+      <div class="cd">
+        <span class="ck">Work Authorization</span>
+        <span class="cv">STEM OPT · Valid through April 2028</span>
+      </div>
     </div>
   </div>
 </div>
@@ -957,65 +1154,86 @@ footer{
 </div>
 </footer>
 
+<!-- CHAT -->
+<button class="chat-btn" id="chatBtn">
+  <svg class="ci" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+  <svg class="xi" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-hd">
+    <div class="chat-av">RD</div>
+    <div>
+      <div class="ch-name">Ask Rohith</div>
+      <div class="ch-status"><span class="sdot"></span>About my background</div>
+    </div>
+  </div>
+  <div class="chat-msgs" id="chatMsgs">
+    <div class="msg mb">Hi! Ask me about my energy analytics or credit risk background, projects, tools, or availability.</div>
+  </div>
+  <div class="chat-sugg">
+    <button class="sugg" onclick="ask(this.textContent)">Energy experience?</button>
+    <button class="sugg" onclick="ask(this.textContent)">Credit risk work?</button>
+    <button class="sugg" onclick="ask(this.textContent)">Visa status?</button>
+    <button class="sugg" onclick="ask(this.textContent)">Thesis finding?</button>
+    <button class="sugg" onclick="ask(this.textContent)">Tools you use?</button>
+    <button class="sugg" onclick="ask(this.textContent)">How to contact?</button>
+  </div>
+  <div class="chat-ir">
+    <input class="chat-in" id="chatIn" type="text" placeholder="Ask anything..." autocomplete="off">
+    <button class="chat-send" id="chatSend">Send</button>
+  </div>
+</div>
+
 <script>
 /* Scroll reveal */
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-  });
-}, { threshold: 0.08 });
+const io = new IntersectionObserver(e => {
+  e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); }});
+}, {threshold:0.08});
 document.querySelectorAll('.r').forEach(el => io.observe(el));
 
 /* Credit score demo */
-(function() {
-  const fi = document.getElementById('fi');
-  const ui = document.getElementById('ui');
-  const di = document.getElementById('di');
-  if (!fi) return;
+(function(){
+  const fi=document.getElementById('fi'),ui=document.getElementById('ui'),di=document.getElementById('di');
+  if(!fi)return;
+  const pd=(f,u,d)=>1/(1+Math.exp(-(-0.022*(f-600)+0.025*u+0.18*d-0.5)));
+  const sc=pg=>{const o=Math.max(pg,.001)/Math.max(1-pg,.001),f=20/Math.log(2);return Math.round(Math.max(300,Math.min(850,600-f*Math.log(50)+f*Math.log(Math.max(o,.001)))))};
+  const di2=s=>s<500?['DECLINE','#922B1A','#fff']:s<620?['REVIEW','#B86E00','#fff']:['APPROVE','#0A7A6C','#fff'];
+  const rs=(f,u,d)=>{const r=[];if(f<580)r.push('Subprime credit score');else if(f<670)r.push('Near-prime credit score');if(u>70)r.push('Very high revolving utilization');else if(u>40)r.push('Elevated revolving utilization');if(d>5)r.push('Multiple recent delinquencies');else if(d>1)r.push('Recent delinquency on record');if(!r.length)r.push('Strong overall credit profile');return r};
+  function upd(){
+    const f=+fi.value,u=+ui.value,d=+di.value;
+    document.getElementById('fv').textContent=f;
+    document.getElementById('uv').textContent=u+'%';
+    document.getElementById('dv').textContent=d;
+    const p=pd(f,u,d),s=sc(1-p),[dec,bg,fg]=di2(s);
+    const sn=document.getElementById('sn');sn.textContent=s;sn.style.color=bg;
+    document.getElementById('pd').textContent=(p*100).toFixed(1)+'%';
+    const db=document.getElementById('db');db.textContent=dec;db.style.background=bg;db.style.color=fg;
+    document.getElementById('rl').innerHTML=rs(f,u,d).map(r=>`<div class="rc">${r}</div>`).join('');
+  }
+  [fi,ui,di].forEach(el=>el.addEventListener('input',upd));upd();
+})();
 
-  function pd(fico, util, delinq) {
-    const z = -0.022*(fico-600) + 0.025*util + 0.18*delinq - 0.5;
-    return 1 / (1 + Math.exp(-z));
-  }
-  function score(pg) {
-    const odds = Math.max(pg,.001) / Math.max(1-pg,.001);
-    const f = 20/Math.log(2);
-    return Math.round(Math.max(300,Math.min(850, 600-f*Math.log(50)+f*Math.log(Math.max(odds,.001)))));
-  }
-  function decInfo(s) {
-    if (s<500) return ['DECLINE','#7A2E20','#fff'];
-    if (s<620) return ['REVIEW', '#9C6A00','#fff'];
-    return             ['APPROVE','#1A5C38','#fff'];
-  }
-  function reasons(fico,util,delinq) {
-    const r=[];
-    if(fico<580)r.push('Subprime credit score');
-    else if(fico<670)r.push('Near-prime credit score');
-    if(util>70)r.push('Very high revolving utilization');
-    else if(util>40)r.push('Elevated revolving utilization');
-    if(delinq>5)r.push('Multiple recent delinquencies');
-    else if(delinq>1)r.push('Recent delinquency on record');
-    if(!r.length)r.push('Strong overall credit profile');
-    return r;
-  }
-  function update() {
-    const fico=+fi.value, util=+ui.value, delinq=+di.value;
-    document.getElementById('fv').textContent=fico;
-    document.getElementById('uv').textContent=util+'%';
-    document.getElementById('dv').textContent=delinq;
-    const pdef=pd(fico,util,delinq);
-    const sc=score(1-pdef);
-    const [dec,bg,fg]=decInfo(sc);
-    const sn=document.getElementById('sn');
-    sn.textContent=sc; sn.style.color=bg;
-    document.getElementById('pd').textContent=(pdef*100).toFixed(1)+'%';
-    const db=document.getElementById('db');
-    db.textContent=dec; db.style.background=bg; db.style.color=fg;
-    document.getElementById('rl').innerHTML=
-      reasons(fico,util,delinq).map(r=>`<div class="rc">${r}</div>`).join('');
-  }
-  [fi,ui,di].forEach(el=>el.addEventListener('input',update));
-  update();
+/* Chat */
+(function(){
+  const btn=document.getElementById('chatBtn'),panel=document.getElementById('chatPanel');
+  const msgs=document.getElementById('chatMsgs'),input=document.getElementById('chatIn');
+  btn.addEventListener('click',()=>{btn.classList.toggle('open');panel.classList.toggle('open');if(panel.classList.contains('open'))input.focus()});
+  const KB=[
+    {k:['energy','electricity','generation','eia','forecast','power','state','thesis','var','clr','renewabl','utility'],a:"My MS capstone at Rutgers built a compositional forecasting pipeline for U.S. electricity generation mix across all 50 states (EIA 1990-2023). I applied CLR transformation with per-state VAR models and AIC lag selection, then benchmarked against a persistence baseline. The baseline won across all three fuel categories, which is the correct finding given roughly 30 annual observations per state. That project led to interviews at Aurora Energy Research, Ascend Analytics, National Grid, and MD Energy Advisors."},
+    {k:['credit','underwriting','risk','auc','scorecard','pdo','default','loan','synergy','fintech','pd','lgd','ks'],a:"At Synergy Resources (Oct-Dec 2025) I built an end-to-end credit underwriting pipeline across 50,000+ accounts. Default model: AUC 0.87, KS 0.42. Loss model: 22% RMSE reduction. I mapped calibrated probabilities to a PDO/ODDS scorecard with APPROVE/REVIEW/DECLINE decisions and reason codes, plus PSI drift monitoring. Contributed to $180K in annualized savings."},
+    {k:['visa','auth','opt','stem','sponsor','h1b','authorization','work','legal','eligible'],a:"I am on STEM OPT valid through April 27, 2028. No H1B sponsorship needed during that period, zero additional cost or paperwork for the employer. I am legally authorized to work in the United States right now."},
+    {k:['baseline','persist','finding','result','mae','honest','beat'],a:"The thesis finding: a persistence baseline outperformed the VAR model across all three fuel categories. Natural Gas: VAR 19.3 pp vs baseline 3.2 pp. Other Fossil: 21.9 vs 4.9. Nuclear and Renewable: 42.0 vs 9.8. The reason: annual generation shares change slowly, and with 30 observations per state the VAR overfits. The right next step is adding exogenous covariates such as fuel price shocks or Renewable Portfolio Standards."},
+    {k:['tool','python','sql','skill','stack','language','power bi','tableau','tech','pandas'],a:"Core: Python, SQL, R. ML: scikit-learn, XGBoost, LightGBM, TensorFlow, statsmodels, pandas, NumPy. BI: Power BI, Tableau, Excel, Matplotlib, Seaborn. Platforms: AWS S3/EC2/Lambda, Docker, Git, Streamlit, Linux. Domain: credit risk PD/LGD, scorecard development, PSI/drift monitoring, energy market analytics."},
+    {k:['contact','email','phone','reach','hire','linkedin','available'],a:"Email: rohith.donthi14@gmail.com. Phone: 908-549-7158. LinkedIn: linkedin.com/in/rohith-donthi. Based in Jersey City, NJ, open to remote and hybrid roles, available to start immediately."},
+    {k:['education','rutgers','degree','ms','graduate','study'],a:"MS Data Science (Statistics Track), Rutgers University, December 2025. Capstone thesis on U.S. state-level electricity generation mix forecasting. Bloomberg Market Concepts (BMC) and Financial Statistics and Risk Management (FSRM) certifications."},
+    {k:['role','looking','target','interest','open','opportunity'],a:"Primarily targeting energy analytics and energy market analyst roles. Also open to credit risk data scientist and analyst roles. Based in Jersey City NJ, open to remote, hybrid, or NYC/NJ office. STEM OPT through April 2028."},
+  ];
+  function ans(q){const l=q.toLowerCase();for(const e of KB){if(e.k.some(k=>l.includes(k)))return e.a}return"Good question. Best to email me directly at rohith.donthi14@gmail.com or check the sections on this page."}
+  function addMsg(t,c){const d=document.createElement('div');d.className='msg '+c;d.textContent=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
+  window.ask=function(q){addMsg(q,'mu');const t=document.createElement('div');t.className='msg mb';t.textContent='...';msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;setTimeout(()=>{t.remove();addMsg(ans(q),'mb')},550)};
+  function go(){const q=input.value.trim();if(!q)return;input.value='';ask(q)}
+  document.getElementById('chatSend').addEventListener('click',go);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')go()});
 })();
 </script>
 </body>
